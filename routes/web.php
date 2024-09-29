@@ -3,10 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MailController;
-use App\Http\Middleware\CustomAuthMiddleware as CustomAuth;
-use GuzzleHttp\Middleware;
-use Illuminate\Http\Request;
-use App\Http\Controllers\nature_ImageController;
 
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::delete('/logout', [LoginController::class, 'destroy']);
@@ -40,5 +36,9 @@ Route::get('/login', function(){
 Route::middleware('CustomAuth') -> group(function (){
     Route::get('/admin', function (){
         return view('adminView');
+    });
+
+    Route::get('/admin/image-upload', function(){
+        return view('imgupload');
     });
 });

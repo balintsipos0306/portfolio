@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
     <title>Sipos Bálint - Szerkesztő felület</title>
 </head>
 <body id="page">
@@ -33,7 +33,7 @@
                 <a class="nav-link active" aria-current="page" href="#">Blog szerkesztés</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/admin/image-upload">Képek feltöltése</a>
+                <a class="nav-link" href="#" disabled = true>Képek feltöltése</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Webshop szerkesztése</a>
@@ -48,8 +48,11 @@
         </div>
       </div>
     </nav>
-
   </header>
+
+  <main>
+    <h1>Képek feltöltése</h1>
+  </main>
 
 </body>
 </html>
