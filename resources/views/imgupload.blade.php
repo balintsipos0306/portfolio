@@ -51,7 +51,32 @@
   </header>
 
   <main>
-    <h1>Képek feltöltése</h1>
+    <h1>Képek</h1>
+
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Képek feltöltése
+    </button>
+
+    <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          
+        <form action="{{ route('gallery.store') }}" method="POST" enctype="multipart/form-data">
+    @csrf
+        <div>
+            <label for="title">Kategória:</label>
+            <input type="text" name="title" id="title">
+        </div>
+
+        <div>
+            <label for="image">Kép feltöltése:</label>
+            <input type="file" name="image" id="image">
+        </div>
+
+        <button type="submit">Feltöltés</button>
+    </form>
+
+        </div>
+    </div>
   </main>
 
 </body>

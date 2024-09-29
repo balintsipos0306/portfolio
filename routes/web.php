@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\GalleryController;
 
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::delete('/logout', [LoginController::class, 'destroy']);
@@ -41,4 +42,11 @@ Route::middleware('CustomAuth') -> group(function (){
     Route::get('/admin/image-upload', function(){
         return view('imgupload');
     });
+
+    Route::get('/admin/gallery', function () {
+        return view('admin.gallery');
+    })->name('gallery.form');
+    
+    Route::post('/admin/gallery', [GalleryController::class, 'store'])->name('gallery.store');
+
 });
