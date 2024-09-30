@@ -21,7 +21,7 @@ class GalleryController extends Controller
 
         // Új rekord mentése az adatbázisba
         Gallery::create([
-            'category' => $request->title,
+            'category' => $request->category,
             'image_path' => $imagePath,
         ]);
 

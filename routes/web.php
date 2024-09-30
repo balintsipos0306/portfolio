@@ -42,11 +42,7 @@ Route::middleware('CustomAuth') -> group(function (){
     Route::get('/admin/image-upload', function(){
         return view('imgupload');
     });
-
-    Route::get('/admin/gallery', function () {
-        return view('admin.gallery');
-    })->name('gallery.form');
     
-    Route::post('/admin/gallery', [GalleryController::class, 'store'])->name('gallery.store');
+    Route::post('/upload', [GalleryController::class, 'store']);
 
 });
