@@ -44,5 +44,6 @@ Route::middleware('CustomAuth') -> group(function (){
     });
     
     Route::post('/upload', [GalleryController::class, 'store']);
+    Route::post('/rm-image', [GalleryController::class, 'delete']);
 
 });

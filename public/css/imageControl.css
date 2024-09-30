@@ -1,0 +1,30 @@
+.container{
+    width:90%;
+    height: fit-content;
+}
+
+#table{
+    width: 100%;
+    background-color: lightgray;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.row:first-child{
+    padding-top: 1em;
+}
+
+#table h2{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.row img{
+    height: 5em;
+    width: auto;
+}
+
+.controls{
+    height: fit-content;
+    margin: auto;
+}

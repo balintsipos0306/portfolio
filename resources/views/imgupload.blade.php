@@ -7,6 +7,7 @@
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
       <link rel="stylesheet" href="../css/style.css">
       <link rel="stylesheet" href="../css/admin.css">
+      <link rel="stylesheet" href="../css/imageControl.css">
       <title>Sipos Bálint - Szerkesztő felület</title>
   </head>
   <body id="page">
@@ -57,64 +58,76 @@
           $pictures = DB::table('gallery')->get()
       @endphp
 
-
-      <div class="container mt-4">
-          <div class="row">
-          <div class="col">
+      <div class="container">
+        <div class="container mt-4" id="table">
+            <div class="row">
+              <div class="col d-flex align-items-center justify-content-center">
                 <h2>ID</h2>
               </div>    
-
-              <div class="col">
+              <div class="col d-flex align-items-center justify-content-center">
                 <h2>Kép</h2>
               </div>
-
-              <div class="col">
+              <div class="col d-flex align-items-center justify-content-center">
                 <h2>Kategória</h2>
               </div>
-
-          </div>
-            
-          @foreach($pictures as $picture)
-            <div class="row">
-                <div class="col">
-                    <p>{{$picture->id}}</p>
-                </div>
-
-                <div class="col">
-                  <img src="{{ asset('storage/' . $picture->image_path) }}">
-                </div>
-
-                <div class="col">
-                  <p>{{$picture->category}}</p>
-                </div>
             </div>
-          @endforeach
-      </div>
+              
+            @foreach($pictures as $picture)
+              <div class="row">
+                  <div class="col d-flex align-items-center justify-content-center">
+                    <p>{{$picture->id}}</p>
+                  </div>
+                  <div class="col d-flex align-items-center justify-content-center">
+                    <img src="{{ asset('storage/' . $picture->image_path) }}">
+                  </div>
+                  <div class="col d-flex align-items-center justify-content-center">
+                    <p>{{$picture->category}}</p>
+                  </div>
+              </div>
+            @endforeach
+        </div>
 
+        <div class="controls">
+          <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Képek feltöltése
+          </button>
 
-      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-          Képek feltöltése
-      </button>
-
-      <div class="collapse" id="collapseExample">
-        <div class="card card-body">
-            
-          <form action="/upload" method="POST" enctype="multipart/form-data">
-          @csrf
-          <div>
-              <label for="category">Kategória:</label>
-              <input type="text" name="category" id="category">
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body"> 
+              <form action="/upload" method="POST" enctype="multipart/form-data">
+              @csrf
+              <div>
+                  <label for="category">Kategória:</label>
+                  <input type="text" name="category" id="category">
+              </div>
+              <div>
+                  <label for="image">Kép feltöltése:</label>
+                  <input type="file" name="image" id="image">
+              </div>
+              <button type="submit">Feltöltés</button>
+              </form>
+            </div>
           </div>
 
-          <div>
-              <label for="image">Kép feltöltése:</label>
-              <input type="file" name="image" id="image">
-          </div>
+          <button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#image-delete" aria-expanded="false" aria-controls="image-delete">
+            Képek törlése
+          </button>
 
-          <button type="submit">Feltöltés</button>
-          </form>
+          <div class="collapse" id="image-delete">
+            <div class="card card-body">
+              <form action="/rm-image" method="POST" enctype="multipart/form-data">
+              @csrf
+              <div>
+                  <label for="id">ID: </label>
+                  <input type="number" name="id" id="id">
+              </div>
+              <button type="submit">törlés</button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
+
     </main>
 
   </body>
