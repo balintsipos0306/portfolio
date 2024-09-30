@@ -34,6 +34,10 @@ Route::get('/login', function(){
     return view('login');
 });
 
+Route::get('/blog', function(){
+    return view('blog');
+});
+
 Route::middleware('CustomAuth') -> group(function (){
     Route::get('/admin', function (){
         return view('adminView');

@@ -40,10 +40,10 @@
               <a class="nav-link" href="/gallery/nature">Galéria</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="#phph">Elérhetőségek</a>
+              <a class="nav-link" href="#">Elérhetőségek</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="#">Blog</a>
+              <a class="nav-link" href="blog">Blog</a>
           </li>
           <li class="nav-item">
               <a class="nav-link" href="#">Webshop</a>
