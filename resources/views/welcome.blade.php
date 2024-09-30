@@ -54,13 +54,13 @@
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="webp/tinywow_DSC_1049_47197740.webp" class="d-block w-100" alt="...">
+                <img src="webp/tinywow_DSC_9983_65856104.webp" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="webp/tinywow_DSC_1090-Enhanced-NR_65855998.webp" class="d-block w-100" alt="...">
               </div>
               <div class="carousel-item">
                 <img src="webp/tinywow_DSC_1521_47197966.webp" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="webp/tinywow_DSC_4683_47198573.webp" class="d-block w-100" alt="...">
               </div>
           </div>
         </div>
@@ -70,13 +70,13 @@
         <div id="carouselExampleSlidesOnly2" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="webp/tinywow_DSC_6205_47198635.webp" class="d-block w-100" alt="...">
+              <img src="webp/DSC_9266.jpeg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="webp/tinywow_DSC_4602_65856490.webp" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
               <img src="webp/tinywow_DSC_6499_47198672.webp" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-              <img src="webp/tinywow_DSC_3724_47198354.webp" class="d-block w-100" alt="...">
             </div>
           </div>
         </div>

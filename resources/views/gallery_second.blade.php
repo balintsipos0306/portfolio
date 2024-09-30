@@ -65,43 +65,16 @@
 
         <hr id="hr" class="border border-black border-2 opacity-100">
 
+        @php
+          $pictures = DB::table('gallery')->where('category', 'Portré')->get();
+        @endphp
+
         <div class="row">
+          @foreach ($pictures as $picture)
             <div class="col-sm-6">
-              <img src="../webp/tinywow_DSC_4100_47198410.webp" alt="">
+              <img src="{{ asset('storage/' . $picture->image_path) }}" alt="">
             </div>
-
-            <div class="col-sm-6">
-              <img id="allo" src="../webp/tinywow_DSC_4187_47198472.webp" alt="">
-            </div>
-
-            <div class="col-sm-6">
-              <img src="../webp/tinywow_DSC_6205_47198635.webp" alt="">
-            </div>
-
-            <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_4578_48056150 (1).webp" alt="">
-            </div>
-
-            <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_4437_48056121.webp" alt="">
-            </div>
-
-          <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_6499_47198672.webp" alt="">
-          </div>
-
-          <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_4263-2_47198506.webp" alt="">
-          </div>
-
-          <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_4827_48056238.webp" alt="">
-          </div>
-
-          <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_4407_48056099.webp" alt="">
-          </div>
-
+          @endforeach
         </div>
 
     </main>

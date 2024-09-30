@@ -74,13 +74,13 @@
               
             @foreach($pictures as $picture)
               <div class="row">
-                  <div class="col d-flex align-items-center justify-content-center">
+                  <div class="col d-flex align-items-center justify-content-center" id="col">
                     <p>{{$picture->id}}</p>
                   </div>
-                  <div class="col d-flex align-items-center justify-content-center">
+                  <div class="col d-flex align-items-center justify-content-center" id="col">
                     <img src="{{ asset('storage/' . $picture->image_path) }}">
                   </div>
-                  <div class="col d-flex align-items-center justify-content-center">
+                  <div class="col d-flex align-items-center justify-content-center" id="col">
                     <p>{{$picture->category}}</p>
                   </div>
               </div>
@@ -98,13 +98,17 @@
               @csrf
               <div>
                   <label for="category">Kategória:</label>
-                  <input type="text" name="category" id="category">
+                  <select class="form-select" name = "category" aria-label="Default select example" required>
+                    <option value="Természet" id="category">Természet</option>
+                    <option value="Rendezvény" id="category">Rendezvény</option>
+                    <option value="Portré" id="category">Portré</option>
+                  </select>
               </div>
               <div>
                   <label for="image">Kép feltöltése:</label>
-                  <input type="file" name="image" id="image">
+                  <input type="file" name="image" id="image" required>
               </div>
-              <button type="submit">Feltöltés</button>
+              <button class="btn btn-primary" type="submit">Feltöltés</button>
               </form>
             </div>
           </div>
@@ -119,9 +123,9 @@
               @csrf
               <div>
                   <label for="id">ID: </label>
-                  <input type="number" name="id" id="id">
+                  <input type="number" name="id" class="form-control">
               </div>
-              <button type="submit">törlés</button>
+              <button class="btn btn-primary" type="submit">törlés</button>
               </form>
             </div>
           </div>

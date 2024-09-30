@@ -66,86 +66,16 @@
 
         <hr id="hr" class="border border-black border-2 opacity-100">
 
+        @php
+          $pictures = DB::table('gallery')->where('category', 'Természet')->get();
+        @endphp
+
         <div class="row">
+          @foreach ($pictures as $picture)
             <div class="col-sm-6">
-              <img src="../webp/tinywow_DSC_0138_47197498.webp" alt="">
+              <img src="{{ asset('storage/' . $picture->image_path) }}" alt="">
             </div>
-
-            <div class="col-sm-6">
-              <img src="../webp/tinywow_DSC_0437_47197594.webp" alt="">
-            </div>
-
-            <div class="col-sm-6">
-              <img src="../webp/tinywow_DSC_0457_47197634.webp" alt="">
-            </div>
-
-            <div class="col-sm-6">
-              <img src="../webp/tinywow_DSC_1045_47197702.webp" alt="">
-            </div>
-
-            <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_1049_47197740.webp" alt="">
-          </div>
-
-          <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_1191_47197774.webp" alt="">
-          </div>
-
-          <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_1345_47197818.webp" alt="">
-          </div>
-
-          <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_1380_47197878.webp" alt="">
-          </div>
-
-          <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_1466_47197939.webp" alt="">
-          </div>
-
-          <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_1521_47197966.webp" alt="">
-          </div>
-
-          <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_4131-Enhanced-NR_47198442.webp" alt="">
-          </div>
-
-          <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_4683_47198573.webp" alt="">
-          </div>
-
-          <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_6657_47198757.webp" alt="">
-          </div>
-
-          <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_6862-2_47198839.webp" alt="">
-          </div>
-
-          <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_7086_47198879.webp" alt="">
-          </div>
-
-          <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_5318_47198610.webp" alt="">
-          </div>
-
-          <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_4285-Enhanced-NR_47198542.webp" alt="">
-          </div>
-  
-          <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_3775_47198386.webp" alt="">
-          </div>
-  
-          <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_9227_47198975.webp" alt="">
-          </div>
-  
-          <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_9830_47199171.webp" alt="">
-          </div>
+          @endforeach
         </div>
 
       </div>

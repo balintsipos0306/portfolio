@@ -5,13 +5,19 @@
 
 #table{
     width: 100%;
-    background-color: lightgray;
-    border-radius: 10px;
     text-align: center;
+    max-height: 28em;
+    overflow: scroll;
 }
 
 .row:first-child{
     padding-top: 1em;
+    background-color: lightgray;
+    border-radius: 10px;
+}
+
+#col{
+    border-bottom: 1px solid black;
 }
 
 #table h2{
@@ -22,6 +28,10 @@
 .row img{
     height: 5em;
     width: auto;
+}
+
+.row{
+    margin: 1em 0;
 }
 
 .controls{

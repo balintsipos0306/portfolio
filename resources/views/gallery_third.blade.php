@@ -65,62 +65,17 @@
 
         <hr id="hr" class="border border-black border-2 opacity-100">
 
-        <div class="row">
-            <div class="col-sm-6">
-              <img src="../webp/tinywow_DSC_2001-2_47197998.webp" alt="">
-            </div>
-
-            <div class="col-sm-6">
-              <img src="../webp/tinywow_DSC_2279_47198041.webp" alt="">
-            </div>
-
-            <div class="col-sm-6">
-              <img src="../webp/tinywow_DSC_2282_47198093.webp" alt="">
-            </div>
-
-            <div class="col-sm-6">
-              <img src="../webp/tinywow_DSC_2305_47198127.webp" alt="">
-            </div>
-
-        </div>
+        @php
+          $pictures = DB::table('gallery')->where('category', 'Rendezvény')->get();
+        @endphp
 
         <div class="row">
-          <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_3724_47198354.webp" alt="">
-          </div>
-
-          <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_7554_47198915.webp" alt="">
-          </div>
-
-          <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_9646_47199003.webp" alt="">
-          </div>
-
-          <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_9662_47199040.webp" alt="">
-          </div>
+          @foreach ($pictures as $picture)
+            <div class="col-sm-6">
+              <img src="{{ asset('storage/' . $picture->image_path) }}" alt="">
+            </div>
+          @endforeach
         </div>
-
-        <div class="row">
-          <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_9738_47199079.webp" alt="">
-          </div>
-
-          <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_9742-2_47199115.webp" alt="">
-          </div>
-
-          <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_9803_47199139.webp" alt="">
-          </div>
-
-          <div class="col-sm-6">
-            <img src="../webp/tinywow_DSC_9926_47199209.webp" alt="">
-          </div>
-        </div>
-
-      </div>
 
     </main>
 
