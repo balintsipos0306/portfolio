@@ -42,6 +42,12 @@
         <li class="nav-item">
           <a class="nav-link" href="contact">Elérhetőségek</a>
         </li>
+        <li class="nav-item">
+              <a class="nav-link" href="#">Blog</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Webshop</a>
+          </li>
       </ul>
     </nav>
 

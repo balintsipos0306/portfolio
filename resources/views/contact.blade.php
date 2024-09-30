@@ -42,6 +42,12 @@
           <li class="nav-item">
               <a class="nav-link" href="#phph">Elérhetőségek</a>
           </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Blog</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Webshop</a>
+          </li>
         </ul>
       </nav>
   </header>
@@ -52,19 +58,6 @@
         <div class="form">
           <form action="/mail" method="POST">
             @csrf
-
-            <!-- <div class="mb-3">
-              <select class="form-select" required aria-label="select example">
-                <option value="">Válasszon szolgáltatást</option>
-                <option value="1">Naptár rendelés</option>
-                <option value="2">Kép rendelés</option>
-                <option value="3">Portré fotózás</option>
-                <option value="4">Rendezvényfotózás</option>
-                <option value="5">Egyéb...</option>
-              </select>
-              <div class="invalid-feedback">Válasszon az alábbi listából</div>
-            </div> -->
-
             <div class="mb-3">
               <label for="name" class="form-label">Név</label>
               <input class="form-control" id="validationTextarea" required name="name"></input>           
