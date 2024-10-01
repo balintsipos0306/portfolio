@@ -12,6 +12,26 @@ main{
     margin-bottom: 5em
 }
 
+.mb-3:last-child{
+    position: relative;
+}
+
+.socials{
+    position: absolute;
+    top:0;
+    right:0;
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+    text-align: right;
+}
+
+.socials img{
+    height: 30px;
+    width: auto;
+    filter: grayscale(0.1);
+}
+
 footer{
     position: relative;
     bottom: 0;
