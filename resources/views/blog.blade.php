@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/fooldal.css">
+    <link rel="stylesheet" href="css/blog.css">
     <link rel="stylesheet" href="css/footer.css">
     <title>Sipos Bálint - Kezdőlap</title>
 </head>
@@ -53,9 +53,25 @@
 
   </header>
     
-    
   <main id = "main">
-      
+    <div class="card" aria-hidden="true">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title placeholder-glow">
+        <span class="placeholder col-6"></span>
+        </h5>
+        <p class="card-text placeholder-glow">
+        <span class="placeholder col-7"></span>
+        <span class="placeholder col-4"></span>
+        <span class="placeholder col-4"></span>
+        <span class="placeholder col-6"></span>
+        <span class="placeholder col-8"></span>
+        </p>
+        <a class="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
+    </div>
+</div>
+
+
   </main>
 
   <footer id="footer">

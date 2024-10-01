@@ -46,6 +46,10 @@ Route::middleware('CustomAuth') -> group(function (){
     Route::get('/admin/image-upload', function(){
         return view('imgupload');
     });
+
+    Route::get('/admin/blog', function(){
+        return view('blog-create');
+    });
     
     Route::post('/upload', [GalleryController::class, 'store']);
     Route::post('/rm-image', [GalleryController::class, 'delete']);
