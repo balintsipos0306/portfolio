@@ -54,6 +54,12 @@
 
     <main>
 
+    <div class="socials">
+                <a href="https://www.instagram.com/balintportraits/" target="_blank"><img src="webp/Instagram_icon.png.webp" alt=""></a>
+                <a href="https://www.facebook.com/balintsipos03" target="_blank"><img src="webp/images.jfif" alt=""></a>
+                <a href="tel:+36705872912"><img src="webp/png-clipart-telephone-logo-iphone-telephone-call-smartphone-phone-electronics-text.png"></img></a>  
+    </div>
+
       <div class="container">
         <div class="form">
           <form action="/mail" method="POST">
@@ -74,11 +80,7 @@
             </div>
           
             <div class="mb-3">
-              <button class="btn btn-primary" type="submit">Submit form</button>
-              <div class="socials">
-                <a href="https://www.instagram.com/balintportraits/" target="_blank"><img src="webp/Instagram_icon.png.webp" alt=""></a>
-                <a href="https://www.facebook.com/balintsipos03" target="_blank"><img src="webp/images.jfif" alt=""></a>
-              </div>
+              <button class="btn btn-primary" type="submit">Email küldése</button>
             </div>
           </form>
         </div>

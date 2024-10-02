@@ -12,18 +12,12 @@ main{
     margin-bottom: 5em
 }
 
-.mb-3:last-child{
-    position: relative;
-}
-
 .socials{
-    position: absolute;
-    top:0;
-    right:0;
-    width: 100%;
+    width: 60%;
     height: fit-content;
+    margin: auto;
     padding: 10px;
-    text-align: right;
+    text-align: center;
 }
 
 .socials img{

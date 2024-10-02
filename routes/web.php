@@ -15,15 +15,15 @@ Route::get('/', function () {
 });
 
 Route::get('/gallery/nature', function () {
-    return view('gallery');
+    return view('Gallery/gallery');
 });
 
 Route::get('/gallery/portraits', function () {
-    return view('gallery_second');
+    return view('Gallery/gallery_second');
 });
 
 Route::get('/gallery/events', function () {
-    return view('gallery_third');
+    return view('Gallery/gallery_third');
 });
 
 Route::get('/contact', function () {
@@ -40,15 +40,15 @@ Route::get('/blog', function(){
 
 Route::middleware('CustomAuth') -> group(function (){
     Route::get('/admin', function (){
-        return view('adminView');
+        return view('Admin/adminView');
     });
 
     Route::get('/admin/image-upload', function(){
-        return view('imgupload');
+        return view('Admin/imgupload');
     });
 
     Route::get('/admin/blog', function(){
-        return view('blog-create');
+        return view('Admin/blog-create');
     });
     
     Route::post('/upload', [GalleryController::class, 'store']);
