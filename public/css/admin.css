@@ -27,3 +27,8 @@ h1{
     text-align: center;
     margin: auto;
 }
+
+#homeButton{
+    text-decoration: none;
+    color:black;
+}

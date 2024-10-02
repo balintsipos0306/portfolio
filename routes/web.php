@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\BlogController;
 
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::delete('/logout', [LoginController::class, 'destroy']);
@@ -53,5 +54,7 @@ Route::middleware('CustomAuth') -> group(function (){
     
     Route::post('/upload', [GalleryController::class, 'store']);
     Route::post('/rm-image', [GalleryController::class, 'delete']);
+
+    Route::post('/blog-upload', [BlogController::class, 'store']);
 
 });

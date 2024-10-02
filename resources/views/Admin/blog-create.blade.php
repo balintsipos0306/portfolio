@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/admin-blog.css">
     <title>Sipos Bálint - Szerkesztő felület</title>
 </head>
 <body id="page">
@@ -24,7 +25,7 @@
         </button>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
           <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menü</h5>
+            <a href="/admin" id="homeButton"><h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menü</h5></a>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
@@ -53,6 +54,99 @@
 
   <main>
     <h2>Blogok szerkesztése</h2>
+
+    @php
+      $blogs = DB::table('blogs') -> get();
+    @endphp
+
+<div class="container">
+        <div class="container mt-4" id="table">
+            <div class="row">
+              <div class="col d-flex align-items-center justify-content-center">
+                <h2>ID</h2>
+              </div>    
+              <div class="col d-flex align-items-center justify-content-center">
+                <h2>Cím</h2>
+              </div>
+              <div class="col d-flex align-items-center justify-content-center">
+                <h2>Szöveg</h2>
+              </div>
+              <div class="col d-flex align-items-center justify-content-center">
+                <h2>Kép</h2>
+              </div>
+              <div class="col d-flex align-items-center justify-content-center">
+                <h2>Állapot</h2>
+              </div>
+              <div class="col d-flex align-items-center justify-content-center">
+                <h2>Utoljára módosítva</h2>
+              </div>
+              <div class="col d-flex align-items-center justify-content-center">
+                <h2>Szerkesztés</h2>
+              </div>
+            </div>
+              
+            @foreach($blogs as $blog)
+              <div class="row">
+                  <div class="col d-flex align-items-center justify-content-center" id="col">
+                    <p>{{$blog->id}}</p>
+                  </div>
+                  <div class="col d-flex align-items-center justify-content-center" id="col">
+                    <p>{{$blog->title}}</p>
+                  </div>
+                  <div class="col d-flex align-items-center justify-content-center" id="col">
+                    <p>{{$blog->text}}</p>
+                  </div>
+                  <div class="col d-flex align-items-center justify-content-center" id="col">
+                    <img src="{{ asset('storage/' . $blog->image_path) }}">
+                  </div>
+                  <div class="col d-flex align-items-center justify-content-center" id="col">
+                    <p>{{$blog->isPublished}}</p>
+                  </div>
+                  <div class="col d-flex align-items-center justify-content-center" id="col">
+                    <p>{{$blog->updated_at}}</p>
+                  </div>
+                  <div class="col d-flex align-items-center justify-content-center" id="col">
+                    <a>Szerkesztés</a>
+                  </div>
+              </div>
+            @endforeach
+        </div>
+
+
+    <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+           Blog készítése
+          </button>
+
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body"> 
+              <form action="/blog-upload" method="POST" enctype="multipart/form-data">
+              @csrf
+
+              <div class="mb-3">
+                <label for="title" class="form-label">Cím</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="text" class="form-label">Szöveg</label>
+                <textarea class="form-control" id="text" name="text" rows="3"></textarea>
+              </div>
+
+              <div class="mb-3">
+                <label for="image" class="form-label">Borítókép feltöltése</label>
+                <input class="form-control" type="file" name="image" id="image" required>
+              </div>
+
+              <label for="isPublished" class="form-label">Mentés módja</label>
+              <select class="form-select" name="isPublished" id="isPublished">
+                <option selected value="published">Publikálás</option>
+                <option value="draft">Piszkozat</option>
+              </select>
+
+              <button class="btn btn-primary" type="submit">Feltöltés</button>
+              </form>
+            </div>
+          </div>
   </main>
 
 </body>
