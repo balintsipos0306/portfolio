@@ -53,7 +53,7 @@
   </header>
 
   <main>
-    <h2>Blogok szerkesztése</h2>
+    <h1>Blogok szerkesztése</h1>
 
     @php
       $blogs = DB::table('blogs') -> get();
@@ -114,39 +114,52 @@
 
 
     <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-           Blog készítése
-          </button>
+      Blog készítése
+    </button>
 
-          <div class="collapse" id="collapseExample">
-            <div class="card card-body"> 
-              <form action="/blog-upload" method="POST" enctype="multipart/form-data">
-              @csrf
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body"> 
+        <form action="/blog-upload" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="mb-3">
+          <label for="title" class="form-label">Cím</label>
+          <input type="text" class="form-control" id="title" name="title" required>
+        </div>
+        <div class="mb-3">
+          <label for="text" class="form-label">Szöveg</label>
+          <textarea class="form-control" id="text" name="text" rows="3"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="image" class="form-label">Borítókép feltöltése</label>
+          <input class="form-control" type="file" name="image" id="image" required>
+        </div>
+        <label for="isPublished" class="form-label">Mentés módja</label>
+        <select class="form-select" name="isPublished" id="isPublished">
+          <option selected value="Publikált">Publikálás</option>
+          <option value="Piszkozat">Piszkozat</option>
+        </select>
+        <button class="btn btn-primary" type="submit">Feltöltés</button>
+        </form>
+      </div>
+    </div>
 
-              <div class="mb-3">
-                <label for="title" class="form-label">Cím</label>
-                <input type="text" class="form-control" id="title" name="title" required>
-              </div>
 
-              <div class="mb-3">
-                <label for="text" class="form-label">Szöveg</label>
-                <textarea class="form-control" id="text" name="text" rows="3"></textarea>
-              </div>
+    <button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#delete" aria-expanded="false" aria-controls="collapseExample">
+      Blog törlése
+    </button>
 
-              <div class="mb-3">
-                <label for="image" class="form-label">Borítókép feltöltése</label>
-                <input class="form-control" type="file" name="image" id="image" required>
-              </div>
-
-              <label for="isPublished" class="form-label">Mentés módja</label>
-              <select class="form-select" name="isPublished" id="isPublished">
-                <option selected value="published">Publikálás</option>
-                <option value="draft">Piszkozat</option>
-              </select>
-
-              <button class="btn btn-primary" type="submit">Feltöltés</button>
-              </form>
-            </div>
-          </div>
+    <div class="collapse" id="delete">
+      <div class="card card-body"> 
+        <form action="/blog-delete" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="mb-3">
+          <label for="id" class="form-label">ID</label>
+          <input type="number" class="form-control" id="id" name="id" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Törlés</button>
+        </form>
+      </div>
+    </div>
   </main>
 
 </body>

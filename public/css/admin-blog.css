@@ -1,3 +1,11 @@
+main{
+    margin-bottom: 1em;
+}
+
+main>h1{
+    margin: auto;
+}
+
 .container{
     width:100%;
     height: fit-content;
@@ -19,7 +27,7 @@
 }
 
 #table h2{
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-weight: bold;
 }
 
