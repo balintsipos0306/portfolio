@@ -25,6 +25,7 @@ document.addEventListener("scroll", function() {
 
     if(window.scrollY > value){
         logo.style.display = "none";
+        // logo.style.transition = "all 1s ease-in-out"
         header.style.backgroundColor = "#3F4E4F";
         header.style.paddingRight = "5%";
         header.style.position= "fixed";
