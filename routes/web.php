@@ -57,5 +57,11 @@ Route::middleware('CustomAuth') -> group(function (){
 
     Route::post('/blog-upload', [BlogController::class, 'store']);
     Route::post('/blog-delete', [BlogController::class, 'delete']);
+    Route::post('/blog-update', [BlogController::class, 'update']);
+
+
+    Route::get('/blog/edit/{id}', function($id) {
+        return view('Admin/blogEdit', ['id' => $id]);
+    })->name('blog.edit');
 
 });

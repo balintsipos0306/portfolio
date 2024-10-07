@@ -39,3 +39,9 @@ main>h1{
 .row{
     margin: 1em 0;
 }
+
+#boritokep{
+    height: 10em;
+    width: auto;
+    margin: auto;
+}

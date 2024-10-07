@@ -106,7 +106,7 @@
                     <p>{{$blog->updated_at}}</p>
                   </div>
                   <div class="col d-flex align-items-center justify-content-center" id="col">
-                    <a>Szerkesztés</a>
+                  <a href="{{ route('blog.edit', ['id' => $blog->id]) }}">Szerkesztés</a>
                   </div>
               </div>
             @endforeach

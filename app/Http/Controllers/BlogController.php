@@ -29,7 +29,7 @@ class BlogController extends Controller
             'isPublished' => $request->isPublished
         ]);
 
-        return redirect()->back()->with('success', 'A kép sikeresen feltöltve.');
+        return redirect()->back()->with('success', 'A blog sikeresen feltöltve.');
     }
 
     public function delete(Request $request)
@@ -48,6 +48,37 @@ class BlogController extends Controller
             }
         }
         return redirect()->back()->with('failed', 'A blog törlése sikertelen');
+    }
 
+    public function update(Request $request)
+    {
+        // Validálás
+        $request->validate([
+            'id' => 'required|int',
+            'title' => 'required|string|max:255',
+            'text' => 'required|string',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'isPublished' => 'required|string|max:255'
+        ]);
+
+        $oldblog = DB::table('blogs')->where('id', $request->id)->first();
+        $image_path = $oldblog->image_path;
+        $file_path = public_path('storage/' . $oldblog->image_path);
+
+        // Új kép feltöltése, régi törlése
+        if($request->hasFile('image'))
+        {
+            unlink($file_path);
+            $image_path = $request->file('image')->store('blogImages', 'public');
+        }
+
+        // Új rekord mentése az adatbázisba
+        DB::table('blogs')->where('id', $request->id)->update([
+            'title' => $request->title,
+            'text' => $request->text,
+            'image_path' => $image_path,
+            'isPublished' => $request->isPublished
+        ]);
+        return redirect('/admin/blog')->with('success', 'A blog módosítása sikeres');
     }
 }
