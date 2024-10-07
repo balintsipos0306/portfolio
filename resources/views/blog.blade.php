@@ -59,25 +59,55 @@
     $blogs = DB::table('blogs')->where('isPublished', "publikált")->get();
   @endphp
 
-  @foreach ($blogs as $blog)
-    <div class="card" aria-hidden="true">
-      <img src="{{ asset('storage/' . $blog->image_path) }}" class="card-img-top" alt="...">
-      <div class="card-body">
-          <h5 class="card-title">
-          <span>{{$blog->title}}</span>
-          </h5>
-          <p class="card-text placeholder-glow">
-          <span class="placeholder col-7"></span>
-          <span class="placeholder col-4"></span>
-          <span class="placeholder col-4"></span>
-          <span class="placeholder col-6"></span>
-          <span class="placeholder col-8"></span>
-          </p>
-          <a class="btn btn-primary col-6" >Megnyitás</a>
+  <div class="row" id="felsorolas">
+    @foreach ($blogs as $blog)
+    <div class="col">
+      <div class="card" aria-hidden="true">
+        <img src="{{ asset('storage/' . $blog->image_path) }}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">
+            <span>{{$blog->title}}</span>
+            </h5>
+            <p class="card-text" id="szoveg">{{$blog->text}}...</p>
+            <a class="btn btn-primary col-6" >Megnyitás</a>
+        </div>
+      </div>
     </div>
-  @endforeach
+    @endforeach
 
+    <div class="col">
+    <div class="card" aria-hidden="true">
+  <div class="card-body">
+    <h5 class="card-title placeholder-glow">
+      <span class="placeholder col-6"></span>
+    </h5>
+    <p class="card-text placeholder-glow">
+      <span class="placeholder col-7"></span>
+      <span class="placeholder col-4"></span>
+      <span class="placeholder col-4"></span>
+      <span class="placeholder col-6"></span>
+      <span class="placeholder col-8"></span>
+    </p>
+    <a class="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
+  </div>
+</div>
+    </div>
+  </div>
 
+  <hr class="border border-secondary border-3 opacity-75">
+
+  @php
+    $latest = DB::table('blogs')->where('isPublished', "Publikált")->orderBy('created_at', 'DESC')->first();
+  @endphp
+
+  <div class="container">
+    <img id="borito" src="{{asset('storage/'. $latest->image_path)}}" alt="">
+    <h2>{{$latest->title}}</h2>
+    <hr>
+    <p>{{$latest->text}}</p>
+
+  </div>
+  
   </main>
 
   <footer id="footer">
