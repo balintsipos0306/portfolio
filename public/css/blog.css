@@ -1,9 +1,19 @@
 #felsorolas{
     margin: auto;
     width: 70%;
-    height: fit-content;
     margin-bottom: 2em;
+}
+
+main .row:first-child{
+    width: max-content;
+    height: 25em;
+    overflow-y: hidden;
     overflow-x: scroll;
+    background-color: red;
+}
+
+.card{
+    width: 20em;
 }
 
 #szoveg{
@@ -25,7 +35,7 @@
 
 h2{
     text-align: center;
-    font-weight: bold   ;
+    font-weight: bold;
 }
 
 hr{
