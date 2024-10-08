@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/fooldal.css">
     <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/scrollbar.css">
     <title>Sipos Bálint - Kezdőlap</title>
 </head>
 <body id="page">

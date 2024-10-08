@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/blog.css">
+    <link rel="stylesheet" href="css/scrollbar.css">
     <link rel="stylesheet" href="css/footer.css">
     <title>Sipos Bálint - Kezdőlap</title>
 </head>
@@ -81,7 +82,7 @@
     </div>
   </div>
 
-  <div class="row" id="felsorolas">
+  <div class="row d-flex flex-nowrap" id="felsorolas">
     @foreach ($blogs as $blog)
     <div class="col">
       <div class="card" aria-hidden="true">

@@ -2,12 +2,11 @@
     margin: auto;
     width: 70%;
     margin-bottom: 2em;
+    overflow-x: auto;
 }
 
 main .row{
     height: 25em;
-    overflow-y: hidden;
-    overflow-x: scroll;
 }
 
 form{
