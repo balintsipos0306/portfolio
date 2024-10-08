@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\SubController;
 
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::delete('/logout', [LoginController::class, 'destroy']);
@@ -38,6 +39,8 @@ Route::get('/login', function(){
 Route::get('/blog', function(){
     return view('blog');
 });
+
+Route::post('/sub', [SubController::class, 'store']);
 
 Route::middleware('CustomAuth') -> group(function (){
     Route::get('/admin', function (){

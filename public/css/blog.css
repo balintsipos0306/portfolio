@@ -4,12 +4,23 @@
     margin-bottom: 2em;
 }
 
-main .row:first-child{
-    width: max-content;
+main .row{
     height: 25em;
     overflow-y: hidden;
     overflow-x: scroll;
-    background-color: red;
+}
+
+form{
+    text-align: left;
+}
+
+form button{
+    float: right;
+}
+
+#sub{
+    margin: auto;
+    width: 38em;
 }
 
 .card{

@@ -31,6 +31,7 @@
 
         <div class="buttons">
             <button type="submit" class="btn btn-primary">Belépés</button>
+            <a class="btn btn-secondary" href="/">Vissza</a>
         </div>
 
         </form>
