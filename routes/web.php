@@ -44,6 +44,10 @@ Route::get('/subEmail', [MailController::class, 'Subscribe']);
 
 Route::post('/sub', [SubController::class, 'store']);
 
+Route::get('/blog/{id}', function($id) {
+    return view('openedBlog', ['id' => $id]);
+})->name('blog.open');
+
 Route::middleware('CustomAuth') -> group(function (){
     Route::get('/admin', function (){
         return view('Admin/adminView');

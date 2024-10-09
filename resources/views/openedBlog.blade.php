@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/blog.css">
-    <link rel="stylesheet" href="css/scrollbar.css">
-    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/blog.css">
+    <link rel="stylesheet" href="../css/scrollbar.css">
+    <link rel="stylesheet" href="../css/footer.css">
     <title>Sipos Bálint - Kezdőlap</title>
 </head>
 <body id="page">
@@ -16,9 +16,9 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-  <script src="js/scroll.js"></script>
-  <script src="js/hamburger.js"></script>
-  <script src="js/adminLogin.js"></script>
+  <script src="../js/scroll.js"></script>
+  <script src="../js/hamburger.js"></script>
+  <script src="../js/adminLogin.js"></script>
 
   <header id="myheader">
 
@@ -29,7 +29,7 @@
     </div>
 
     <div class= "logoholder">
-      <img id = "logo" src="webp/tinywow_Logó.webp" alt="">
+      <img id = "logo" src="../webp/tinywow_Logó.webp" alt="">
     </div>
 
     <nav id = "navv">
@@ -58,6 +58,9 @@
     
   @php
     $blogs = DB::table('blogs')->where('isPublished', "publikált")->get();
+    $selected = DB::table('blogs')->where('isPublished', "publikált")->where('id', $id)->first();
+    $previous = DB::table('blogs')->where('isPublished', "publikált")->where('created_at', '<', $selected->created_at)->orderBy('created_at', 'DESC')->first();
+    $next = DB::table('blogs')->where('isPublished', "publikált")->where('created_at', '>', $selected->created_at)->orderBy('created_at', 'ASC')->first();
   @endphp
 
   <div class="container">
@@ -81,6 +84,26 @@
           </form>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <img id="borito" src="{{asset('storage/'. $selected->image_path)}}" alt="">
+    <h2>{{$selected->title}}</h2>
+    <hr>
+    <p>{{$selected->text}}</p>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        @if (empty($previous->id))
+        <a type="button" class="btn btn-secondary" disabled>Előző blog</a>
+        @else
+        <a type="button" class="btn btn-secondary" href="/blog/{{$previous->id}}">Előző blog</a>
+        @endif
+        <a type="button" class="btn btn-primary" href="/blog">Vissza a főoldalra</a>
+        @if (empty($next->id))
+            <a type="button" class="btn btn-secondary" disabled>Következő blog</a>
+        @else
+        <a type="button" class="btn btn-secondary" href="/blog/{{$next->id}}">Következő blog</a>
+        @endif
     </div>
   </div>
 
@@ -117,20 +140,6 @@
   </div>
 </div>
     </div>
-  </div>
-
-  <hr class="border border-secondary border-3 opacity-75">
-
-  @php
-    $latest = DB::table('blogs')->where('isPublished', "Publikált")->orderBy('created_at', 'DESC')->first();
-  @endphp
-
-  <div class="container">
-    <img id="borito" src="{{asset('storage/'. $latest->image_path)}}" alt="">
-    <h2>{{$latest->title}}</h2>
-    <hr>
-    <p>{{$latest->text}}</p>
-
   </div>
   
   </main>
