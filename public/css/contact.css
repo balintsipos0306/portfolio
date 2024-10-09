@@ -7,6 +7,7 @@ form{
     margin: auto;
     width: 60%;
     padding: 10px;
+    float: right;
 }
 
 main{
@@ -32,6 +33,16 @@ footer{
     bottom: 0;
     margin-top: 5em;
     margin-bottom: 0    ;
+}
+
+.image{
+    width: 40%;
+    padding: 1em;
+    float: left;
+}
+
+.image img{
+    height: 20em;
 }
 
 @media (max-width: 1500px){
