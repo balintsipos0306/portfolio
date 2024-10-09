@@ -8,6 +8,8 @@ form{
     width: 60%;
     padding: 10px;
     float: right;
+    border-radius: 10px;
+    box-shadow: 10px 10px 30px lightgrey;
 }
 
 main{
@@ -43,6 +45,7 @@ footer{
 
 .image img{
     height: 20em;
+    box-shadow: 10px 10px 30px lightgray;
 }
 
 @media (max-width: 1500px){
