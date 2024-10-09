@@ -21,6 +21,6 @@ class SubController extends Controller
             'email' => $request->email,
         ]);
 
-        return redirect()->back()->with('success', 'Sikeres feliratkozás');
+        return redirect('/subEmail');
     }
 }

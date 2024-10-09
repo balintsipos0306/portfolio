@@ -40,6 +40,8 @@ Route::get('/blog', function(){
     return view('blog');
 });
 
+Route::get('/subEmail', [MailController::class, 'Subscribe']);
+
 Route::post('/sub', [SubController::class, 'store']);
 
 Route::middleware('CustomAuth') -> group(function (){
