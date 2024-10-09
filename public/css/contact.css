@@ -1,10 +1,11 @@
 .container:first-child{
     margin: auto;
-    width:70%;
-
+    width:60%;
 }
 
 form{
+    margin: auto;
+    width: 60%;
     padding: 10px;
 }
 

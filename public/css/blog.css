@@ -13,13 +13,23 @@ form{
     text-align: left;
 }
 
+.g{
+    margin: auto;
+}
+
+#inputs{
+    margin: auto;
+    width: 90%;
+    margin-bottom: 0.5em;
+}
+
 form button{
     float: right;
 }
 
 #sub{
     margin: auto;
-    width: 38em;
+    width: 50em;
 }
 
 .card{
