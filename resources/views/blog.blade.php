@@ -69,7 +69,7 @@
             @csrf
             <div class="input-group" id="inputs">
               <div class="g col-3">
-                <label for="name" class="form-label">Név</label>
+                <label for="name" class="form-label">Keresztnév</label>
                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="name" name="name">
               </div>
               <div class="g col-6" id="email">
