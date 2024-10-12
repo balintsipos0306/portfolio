@@ -57,6 +57,8 @@ Route::get('/unSubscribe', function(Request $request){
 
 Route::post('/rm-sub', [SubController::class, 'delete'] );
 
+Route::post('/send-email-to-subs', [MailController::class, 'sendMailToSub']);
+
 Route::middleware('CustomAuth') -> group(function (){
     Route::get('/admin', function (){
         return view('Admin/adminView');

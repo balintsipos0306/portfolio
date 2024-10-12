@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 class MailController extends Controller
 {
@@ -34,7 +31,7 @@ class MailController extends Controller
         $mail->Port = env('MAIL_PORT');
 
         $mail->setFrom($address, $name);
-        $mail->addAddress('siposbalint0306@gmail.com', 'balintsipos');
+        $mail->addAddress('siposbalint0306@gmail.com', 'Sipos Bálint');
         $mail->isHTML(true);
         $mail->CharSet = 'UTF-8';
         $mail->addEmbeddedImage(public_path('webp/Logó_email.jpg'), 'logoimg');
@@ -42,7 +39,7 @@ class MailController extends Controller
         $mail->Subject = $title;
         $mail->Body = '
             <div style="margin: auto; padding: 1em; color:#3F4E4F; margin: 1em; border-radius: 10px;font-family: Trebuchet MS; box-shadow: 20px 20px 50px grey;">
-            <div style="text-align: center;"><img src="cid:logoimg" style="margin: auto; height: 5em; width: auto;"></div>
+            <div style="text-align: center"><div style="margin:auto;background-color: white; width: fit-content;padding:1em;border-radius: 100%;"><img src="cid:logoimg" style="margin: auto; height: 5em; width: auto;"></div></div>
             <h3 style="margin: auto; text-align: center;">Feladó: ' . $name . ' </h3>
             <h4 style="margin: auto; text-align: center;">Email: ' . $address . ' </h4>
             <hr>
@@ -75,7 +72,7 @@ class MailController extends Controller
         $mail->Port = env('MAIL_PORT');
         $mail->CharSet = 'UTF-8';
 
-        $mail->setFrom('siposbalint0306@gmail.com', 'balintsipos');
+        $mail->setFrom('siposbalint0306@gmail.com', 'Sipos Bálint');
         $mail->addAddress($address, $name);
         $mail->isHTML(true);
 
@@ -83,14 +80,14 @@ class MailController extends Controller
         $mail->Subject ="Sikeres feliratkozás";
         $mail->Body = '
                 <div style=" margin: auto; padding: 1em; color:#3F4E4F; margin: 1em; border-radius: 10px;font-family: Trebuchet MS; box-shadow: 20px 20px 50px grey;">
-                <div style="text-align: center;"><img src="cid:logoimg" style="margin: auto; height: 5em; width: auto;"></div>
+                <div style="text-align: center"><div style="margin:auto;background-color: white; width: fit-content;padding:1em;border-radius: 100%;"><img src="cid:logoimg" style="margin: auto; height: 5em; width: auto;"></div></div>
                 <h1 style="margin: auto; text-align: center;">Kedves ' . $name . '</h1>
                 <hr>
                 <p>Köszönöm hogy feliratkoztál a hírlevelemre.
                 Minden új blog bejegyzésről, vagy webshop termékekről elsőként fogsz értesítést kapni, hogy ne maradj le semmiről</p>
                 <br>
                 <div style="margin: auto;text-align: center;"><a href="http://localhost:8000/unSubscribe?email=' . urlencode($address) . '&name=' . urlencode($name) . '" style="background-color: #3F4E4F; color: white;padding: 10px; border-radius: 10px; text-decoration: none;">Leiratkozás</a></div>
-                </div>
+                </div> 
             ';
 
         if (!$mail->send()) {
@@ -102,5 +99,53 @@ class MailController extends Controller
         $mail->smtpClose();
 
         return redirect()->back()->with('Success', 'Sikeres feliratkozás');
+    }
+
+    public function sendMailToSub(Request $request){
+        $request->validate([
+            'title'=>'required|string',
+            'text'=>'required|string'
+        ]);
+        $title = $request->input('title');
+        $text = $request->input('text');
+        
+        $subs = DB::table('subscription')->get();
+        foreach($subs as $subscriber){
+            $mail = new PHPMailer(true);
+            $mail->isSMTP();
+            $mail->Host =  env('MAIL_HOST');
+            $mail->SMTPAuth = true;
+            $mail->Username = env('MAIL_USERNAME');
+            $mail->Password = env('MAIL_PASSWORD');
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = env('MAIL_PORT');
+            $mail->CharSet = 'UTF-8';
+    
+            $mail->setFrom('siposbalint0306@gmail.com', 'Sipos Bálint');
+            $mail->addAddress($subscriber->email, $subscriber->name);    
+            $mail->isHTML(true);
+            $mail->addEmbeddedImage(public_path('webp/Logó_email.jpg'), 'logoimg');
+            $mail->Subject = $title;
+            $mail->Body='
+                <div style="margin: auto; padding: 1em; color:#3F4E4F; margin: 1em; border-radius: 10px;font-family: Trebuchet MS; box-shadow: 20px 20px 50px grey;">
+                <div style="text-align: center"><div style="margin:auto;background-color: white; width: fit-content;padding:1em;border-radius: 100%;"><img src="cid:logoimg" style="margin: auto; height: 5em; width: auto;"></div></div>
+                <h1 style="margin: auto; text-align: center;">Kedves '. $subscriber->name .'!</h1>
+                <hr>
+                <p>'. $text .'</p>
+                <br>
+                <hr style="width:80%;margin-top:10em;">
+                <div>
+                    <p style="text-align: center;font-size: 0.7em;"><i>Ezt az emailt kapod mert korábban feliratkoztál a hírlevelemre. Ha nem szeretnél több ilyen emailt kapni az alábbi gombra kattintva tudsz leiratkozni</i></p>
+                    <div style="margin: auto;text-align: center;"><a href="http://localhost:8000/unSubscribe?email=' . urlencode($subscriber->email) . '&name=' . urlencode($subscriber->name) . '" style="background-color: #3F4E4F; color: white;padding: 10px; border-radius: 10px; text-decoration: none;">Leiratkozás</a></div>
+                </div>
+                </div>
+            ';
+
+            $mail->send();
+            $mail->smtpClose();
+
+        }
+        return redirect()->back()->with('success', 'körlevél sikeresen elküldve');
+
     }
 }
