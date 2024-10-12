@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\GalleryController;
@@ -47,6 +48,14 @@ Route::post('/sub', [SubController::class, 'store']);
 Route::get('/blog/{id}', function($id) {
     return view('openedBlog', ['id' => $id]);
 })->name('blog.open');
+
+Route::get('/unSubscribe', function(Request $request){
+    $email = $request->query('email');
+    $name = $request->query('name');
+    return view('unSubscribe')->with(['name' => $name, 'email' => $email]);
+});
+
+Route::post('/rm-sub', [SubController::class, 'delete'] );
 
 Route::middleware('CustomAuth') -> group(function (){
     Route::get('/admin', function (){

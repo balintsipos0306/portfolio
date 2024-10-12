@@ -71,17 +71,22 @@
             @csrf
             <div class="mb-3">
               <label for="name" class="form-label">Név</label>
-              <input class="form-control" id="validationTextarea" required name="name"></input>           
+              <input class="form-control" id="validationTextarea" name="name" required></input>           
             </div>
 
             <div class="mb-3">
               <label for="email" class="form-label">Email cím</label>
-              <input class="form-control" id="validationTextarea" required name="address"></input>            
+              <input class="form-control" id="validationTextarea" name="address" required></input>
             </div>
 
             <div class="mb-3">
-              <label for="validationTextarea" class="form-label">Üzenet</label>
-              <textarea class="form-control" id="validationTextarea" required name="text"></textarea>
+              <label for="title" class="form-label">Tárgy</label>
+              <input class="form-control" id="validationTextarea" name="title" required></input>
+            </div>
+
+            <div class="mb-3">
+              <label for="text" class="form-label">Üzenet</label>
+              <textarea class="form-control" id="validationTextarea" name="text" required></textarea>
             </div>
           
             <div class="mb-3">

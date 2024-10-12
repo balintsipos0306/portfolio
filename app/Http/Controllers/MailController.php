@@ -16,9 +16,12 @@ class MailController extends Controller
         $request->validate([
             'address' => 'required|email',
             'name' => 'required|string|max:255',
+            'title' => 'required|string',
+            'text' => 'required|string'
         ]);
         $address = $request->input('address');
         $name = $request->input('name');
+        $title = $request->input('title');
         $text = $request->input('text');
 
         $mail = new PHPMailer(true);
@@ -31,22 +34,26 @@ class MailController extends Controller
         $mail->Port = env('MAIL_PORT');
 
         $mail->setFrom($address, $name);
-        $mail->addAddress($address, $name);
         $mail->addAddress('siposbalint0306@gmail.com', 'balintsipos');
-        $mail->isHTML(false);
+        $mail->isHTML(true);
         $mail->CharSet = 'UTF-8';
+        $mail->addEmbeddedImage(public_path('webp/Logó_email.jpg'), 'logoimg');
 
-        $mail->Subject = $name . "-" . $address;
-        $mail->Body = $text;
+        $mail->Subject = $title;
+        $mail->Body = '
+            <div style="margin: auto; padding: 1em; color:#3F4E4F; margin: 1em; border-radius: 10px;font-family: Trebuchet MS; box-shadow: 20px 20px 50px grey;">
+            <div style="text-align: center;"><img src="cid:logoimg" style="margin: auto; height: 5em; width: auto;"></div>
+            <h3 style="margin: auto; text-align: center;">Feladó: ' . $name . ' </h3>
+            <h4 style="margin: auto; text-align: center;">Email: ' . $address . ' </h4>
+            <hr>
+            <p>'. $text .'</p>
+            </div>
+        ';
 
-        if (!$mail->send()) {
-            echo 'Email not sent. An error was encountered: ' . $mail->ErrorInfo;
-        } else {
-            echo 'Message has been sent.';
-
-        }
-
+        $mail->send();
         $mail->smtpClose();
+
+        return redirect()->back()->with('success', 'email sikeresen elküldve');
     }
 
     public function Subscribe(Request $request){
@@ -79,10 +86,10 @@ class MailController extends Controller
                 <div style="text-align: center;"><img src="cid:logoimg" style="margin: auto; height: 5em; width: auto;"></div>
                 <h1 style="margin: auto; text-align: center;">Kedves ' . $name . '</h1>
                 <hr>
-                <p>Köszönöm hogy feliratkoztál a hírlevelemre
+                <p>Köszönöm hogy feliratkoztál a hírlevelemre.
                 Minden új blog bejegyzésről, vagy webshop termékekről elsőként fogsz értesítést kapni, hogy ne maradj le semmiről</p>
                 <br>
-                <div style="margin: auto;text-align: center;"><a href="http://localhost:8000/unsubscribe" style="background-color: #3F4E4F; color: white;padding: 10px; border-radius: 10px; text-decoration: none;">Leiratkozás</a></div>
+                <div style="margin: auto;text-align: center;"><a href="http://localhost:8000/unSubscribe?email=' . urlencode($address) . '&name=' . urlencode($name) . '" style="background-color: #3F4E4F; color: white;padding: 10px; border-radius: 10px; text-decoration: none;">Leiratkozás</a></div>
                 </div>
             ';
 
