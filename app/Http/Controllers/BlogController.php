@@ -29,6 +29,12 @@ class BlogController extends Controller
             'isPublished' => $request->isPublished
         ]);
 
+        if($request->isPublished == "Publikált"){
+            return redirect()->action([MailController::class, 'newBlogToMail'], ['title' => $request->title,
+                                                                                                        'text' => $request->text,
+                                                                                                        'imagePath' => $request->imagePath,
+                                                                                                        ]);
+        }
         return redirect()->back()->with('success', 'A blog sikeresen feltöltve.');
     }
 

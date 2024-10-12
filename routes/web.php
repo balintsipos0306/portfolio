@@ -59,6 +59,8 @@ Route::post('/rm-sub', [SubController::class, 'delete'] );
 
 Route::post('/send-email-to-subs', [MailController::class, 'sendMailToSub']);
 
+Route::get('/newBlog-email', [MailController::class, 'newBlogToMail']);
+
 Route::middleware('CustomAuth') -> group(function (){
     Route::get('/admin', function (){
         return view('Admin/adminView');

@@ -20,7 +20,6 @@ class MailController extends Controller
         $name = $request->input('name');
         $title = $request->input('title');
         $text = $request->input('text');
-
         $mail = new PHPMailer(true);
         $mail->isSMTP();
         $mail->Host =  env('MAIL_HOST');
@@ -29,13 +28,11 @@ class MailController extends Controller
         $mail->Password = env('MAIL_PASSWORD');
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = env('MAIL_PORT');
-
         $mail->setFrom($address, $name);
         $mail->addAddress('siposbalint0306@gmail.com', 'Sipos Bálint');
         $mail->isHTML(true);
         $mail->CharSet = 'UTF-8';
         $mail->addEmbeddedImage(public_path('webp/Logó_email.jpg'), 'logoimg');
-
         $mail->Subject = $title;
         $mail->Body = '
             <div style="margin: auto; padding: 1em; color:#3F4E4F; margin: 1em; border-radius: 10px;font-family: Trebuchet MS; box-shadow: 20px 20px 50px grey;">
@@ -46,10 +43,8 @@ class MailController extends Controller
             <p>'. $text .'</p>
             </div>
         ';
-
         $mail->send();
         $mail->smtpClose();
-
         return redirect()->back()->with('success', 'email sikeresen elküldve');
     }
 
@@ -61,7 +56,6 @@ class MailController extends Controller
 
         $address = $request->input('email');
         $name = $request->input('name');
-
         $mail = new PHPMailer(true);
         $mail->isSMTP();
         $mail->Host =  env('MAIL_HOST');
@@ -71,11 +65,9 @@ class MailController extends Controller
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = env('MAIL_PORT');
         $mail->CharSet = 'UTF-8';
-
         $mail->setFrom('siposbalint0306@gmail.com', 'Sipos Bálint');
         $mail->addAddress($address, $name);
         $mail->isHTML(true);
-
         $mail->addEmbeddedImage(public_path('webp/Logó_email.jpg'), 'logoimg');
         $mail->Subject ="Sikeres feliratkozás";
         $mail->Body = '
@@ -89,15 +81,12 @@ class MailController extends Controller
                 <div style="margin: auto;text-align: center;"><a href="http://localhost:8000/unSubscribe?email=' . urlencode($address) . '&name=' . urlencode($name) . '" style="background-color: #3F4E4F; color: white;padding: 10px; border-radius: 10px; text-decoration: none;">Leiratkozás</a></div>
                 </div> 
             ';
-
         if (!$mail->send()) {
             echo 'Email not sent. An error was encountered: ' . $mail->ErrorInfo;
         } else {
             echo 'Message has been sent.';
-
         }
         $mail->smtpClose();
-
         return redirect()->back()->with('Success', 'Sikeres feliratkozás');
     }
 
@@ -120,7 +109,6 @@ class MailController extends Controller
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = env('MAIL_PORT');
             $mail->CharSet = 'UTF-8';
-    
             $mail->setFrom('siposbalint0306@gmail.com', 'Sipos Bálint');
             $mail->addAddress($subscriber->email, $subscriber->name);    
             $mail->isHTML(true);
@@ -140,12 +128,24 @@ class MailController extends Controller
                 </div>
                 </div>
             ';
-
             $mail->send();
             $mail->smtpClose();
-
         }
         return redirect()->back()->with('success', 'körlevél sikeresen elküldve');
+    }
+
+    public function newBlogToMail(Request $request){
+        $title = $request->input('title');
+        $text = $request->input('text');
+        $imagepath = 'storage/' . $request->input('imagePath');
+        
+        
+        //FOLYT KÖv
+        // Email elküldése
+        // Ha piszkozat pulbikálásakor is email
+        // Alapvető email cuccokat külön függvényekbebe rakni -->> Egy kis rendrakás
+
+
 
     }
 }
