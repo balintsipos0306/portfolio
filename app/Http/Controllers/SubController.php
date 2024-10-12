@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Subscription;
 use Illuminate\Http\Request;
+use App\Http\Controllers\MailController;
 
 class SubController extends Controller
 {
@@ -21,6 +22,6 @@ class SubController extends Controller
             'email' => $request->email,
         ]);
 
-        return redirect('/subEmail');
+        return redirect()->action([MailController::class, 'Subscribe'], ['email' => $request->email, 'name'=> $request->name]);
     }
 }
