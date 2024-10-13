@@ -182,10 +182,15 @@ class MailController extends Controller
         return redirect()->back()->with('success', 'Blog feltöltve - email elküldve');
         
         //FOLYT KÖv
-        // Email elküldése
-        // Ha piszkozat pulbikálásakor is email
-        // Alapvető email cuccokat külön függvényekbebe rakni -->> Egy kis rendrakás
 
+        //WEBSHOP oldal lértrehozása
+        //  Login, reg
+        //  Kosár
+        // Termékek, keresés stb..
+
+        //Kommentek
+        //Alapvető cuccokat külön függvényekbebe rakni -->> Egy kis rendrakás
+        // SEEDEK
 
 
     }
