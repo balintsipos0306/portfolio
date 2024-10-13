@@ -137,8 +137,49 @@ class MailController extends Controller
     public function newBlogToMail(Request $request){
         $title = $request->input('title');
         $text = $request->input('text');
-        $imagepath = 'storage/' . $request->input('imagePath');
+        $imagePath = public_path('storage/' . $request->input('imagePath'));
+        $id = $request->input('id');
         
+        $subs = DB::table('subscription')->get();
+        foreach($subs as $subscriber){
+            $mail = new PHPMailer(true);
+            $mail->isSMTP();
+            $mail->Host =  env('MAIL_HOST');
+            $mail->SMTPAuth = true;
+            $mail->Username = env('MAIL_USERNAME');
+            $mail->Password = env('MAIL_PASSWORD');
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = env('MAIL_PORT');
+            $mail->CharSet = 'UTF-8';
+            $mail->setFrom('siposbalint0306@gmail.com', 'Sipos Bálint');
+            $mail->addAddress($subscriber->email, $subscriber->name);    
+            $mail->isHTML(true);
+            $mail->addEmbeddedImage(public_path('webp/Logó_email.jpg'), 'logoimg');
+            $mail->addEmbeddedImage($imagePath, 'blogImage');
+            $mail->Subject = $title;
+            $mail->Body='
+            <div style="margin: auto; padding: 1em; color:#3F4E4F; margin: 1em; border-radius: 10px;font-family: Trebuchet MS; box-shadow: 20px 20px 50px grey;">
+                <div style="text-align: center"><div style="margin:auto;background-color: white; width: fit-content;padding:1em;border-radius: 100%;"><img src="cid:logoimg" style="margin: auto; height: 5em; width: auto;"></div></div>
+                <h3 style="margin: auto; text-align: center;"><i>Új blog bejegyzés:</i></h3>
+                <h1 style="margin: auto; text-align: center;">'. $title .'</h1>
+                <hr>
+                <p><h2>Kedves '. $subscriber->name .'!</h2></p>
+                <p>Most jelent meg az új blogom "'. $title .'" címel. Kattints a gombra, hogy elolvasd.</p>
+                <div style="text-align: center;margin-bottom: 1em; width:100%"><img src="cid:blogImage" style="margin: auto; width: 100%; height: auto;"></div>
+                <p style="width: 90%; margin: auto; text-align: center;margin-bottom: 2.5em;">'. $text .'</p>
+                <div style="margin:auto;text-align: center;"><a href="http://localhost:8000/blog/'. $id .'" style="background-color: #3F4E4F; color: white;padding: 15px; border-radius: 10px; text-decoration: none;">Megnyitás</a></div>
+                <br>
+                <hr style="width:80%;margin-top:10em;">
+                <div>
+                    <p style="text-align: center;font-size: 0.7em;"><i>Ezt az emailt kapod mert korábban feliratkoztál a hírlevelemre. Ha nem szeretnél több ilyen emailt kapni az alábbi gombra kattintva tudsz leiratkozni</i></p>
+                    <div style="margin: auto;text-align: center;"><a href="http://localhost:8000/unSubscribe?email=' . urlencode($subscriber->email) . '&name=' . urlencode($subscriber->name) . '" style="background-color: #3F4E4F; color: white;padding: 10px; border-radius: 10px; text-decoration: none;">Leiratkozás</a></div>
+                </div>
+            </div>
+            ';
+            $mail->send();
+            $mail->smtpClose();
+        }
+        return redirect()->back()->with('success', 'Blog feltöltve - email elküldve');
         
         //FOLYT KÖv
         // Email elküldése

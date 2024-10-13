@@ -29,10 +29,15 @@ class BlogController extends Controller
             'isPublished' => $request->isPublished
         ]);
 
+        $new = DB::table('blogs')->where('title', $request->title)->where('text', $request->text)->first();
+        $id = $new->id;
+
+
         if($request->isPublished == "Publikált"){
             return redirect()->action([MailController::class, 'newBlogToMail'], ['title' => $request->title,
                                                                                                         'text' => $request->text,
-                                                                                                        'imagePath' => $request->imagePath,
+                                                                                                        'imagePath' => $imagePath,
+                                                                                                        'id'=>$id,
                                                                                                         ]);
         }
         return redirect()->back()->with('success', 'A blog sikeresen feltöltve.');
@@ -85,6 +90,16 @@ class BlogController extends Controller
             'image_path' => $image_path,
             'isPublished' => $request->isPublished
         ]);
+
+        $updated = DB::table('blogs')->where('title', $request->title)->where('text', $request->text)->first();
+        $id = $updated->id;
+        if($request->isPublished == "Publikált" && $oldblog->isPublished == "Piszkozat"){
+            return redirect()->action([MailController::class, 'newBlogToMail'], ['title' => $request->title,
+                                                                                                        'text' => $request->text,
+                                                                                                        'imagePath' => $image_path,
+                                                                                                        'id'=>$id,
+                                                                                                        ]);
+        }
         return redirect('/admin/blog')->with('success', 'A blog módosítása sikeres');
     }
 }
