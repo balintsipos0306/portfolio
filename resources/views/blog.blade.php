@@ -47,7 +47,7 @@
               <a class="nav-link" href="#">Blog</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="#">Webshop</a>
+              <a class="nav-link" href="/shop">Webshop</a>
           </li>
       </ul>
     </nav>

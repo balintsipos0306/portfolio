@@ -38,16 +38,16 @@
           <a class="nav-link" aria-current="page" href="/">Kezdőlap</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="gallery/nature">Galéria</a>
+          <a class="nav-link" href="/gallery/nature">Galéria</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="contact">Elérhetőségek</a>
+          <a class="nav-link" href="/contact">Elérhetőségek</a>
         </li>
         <li class="nav-item">
               <a class="nav-link" href="#">Blog</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="#">Webshop</a>
+              <a class="nav-link" href="/shop">Webshop</a>
           </li>
       </ul>
     </nav>

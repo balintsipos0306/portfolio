@@ -61,6 +61,10 @@ Route::post('/send-email-to-subs', [MailController::class, 'sendMailToSub']);
 
 Route::get('/newBlog-email', [MailController::class, 'newBlogToMail']);
 
+Route::get('/shop', function(){
+    return view("webshop");
+});
+
 Route::middleware('CustomAuth') -> group(function (){
     Route::get('/admin', function (){
         return view('Admin/adminView');
