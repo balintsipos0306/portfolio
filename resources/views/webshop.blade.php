@@ -13,8 +13,65 @@
 <body id="page">
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  <script src="js/hamburger.js"></script>
+  <script src="js/adminLogin.js"></script>
 
-    <header>  
+  <header id="myheader">
+
+    <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+    </div>
+
+    <div class= "logoholder">
+      <img id = "logo" src="webp/tinywow_Logó.webp" alt="">
+    </div>
+
+    <nav id = "navv">
+      <ul class="nav justify-content-end" id="menu">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/">Kezdőlap</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/gallery/nature">Galéria</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Elérhetőségek</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/blog">Blog</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/shop">Webshop</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="container">
+        <ul id="iconList" class="nav">
+        <li class="nav-item">
+            <a data-bs-toggle="collapse" href="#profile"><img id="icon" src="../webp/user.png" alt=""></a>
+            <!-- <div class="collapse" id="profile">
+                <div class="card card-body">
+                    Belépés/Regisztráció
+                </div>
+            </div> -->
+        </li>
+        <li class="nav-item">
+            <a data-bs-toggle="collapse" href="#cart"><img id="icon" src="../webp/shopping-cart.png" alt=""></a>
+            <!-- <div class="collapse" id="cart">
+                <div class="card card-body">
+                    Kosár tartalma
+                </div>
+            </div> -->
+        </li>
+        </ul>
+    </div>
+  </header>
+
+
+
+    <!-- <header>  
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <img id="logo" src="../webp/tinywow_Logó.webp" alt="">
@@ -37,17 +94,27 @@
                         </li>
                     </ul>
                 </div>
-                <ul class="d-flex" id="iconList">
+                <ul id="iconList">
                         <li class="nav-item">
-                            <img id="icon" src="../webp/user.png" alt="">    
+                            <a data-bs-toggle="collapse" href="#profile"><img id="icon" src="../webp/user.png" alt=""></a>
+                            <div class="collapse" id="profile">
+                                <div class="card card-body">
+                                    Belépés/Regisztráció
+                                </div>
+                            </div>
                         </li>
                         <li class="nav-item">
-                            <img id="icon" src="../webp/shopping-cart.png" alt="">
+                            <a data-bs-toggle="collapse" href="#cart"><img id="icon" src="../webp/shopping-cart.png" alt=""></a>
+                            <div class="collapse" id="cart">
+                                <div class="card card-body">
+                                    Kosár tartalma
+                                </div>
+                            </div>
                         </li>
                 </ul>
             </div>
         </nav>
-    </header>
+    </header> -->
 
   <main>
     <div class="container">

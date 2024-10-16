@@ -51,7 +51,7 @@ body{
     position: relative;
     transition: background-color 0.8s ease-in-out;
     transition: padding-right 0.3s ease-in-out;
-    z-index: 99999;
+    z-index: 1;
     font-size: large;
     margin-bottom: 1em;
 }
@@ -75,7 +75,7 @@ header nav{
     display:flex;
     justify-content:center;
     height: fit-content;
-    z-index: 99999;
+    z-index: 3;
 }
 
 header nav ul li a.nav-link, header nav ul li a.nav-link:hover, header nav ul li a.nav-link:visited {
