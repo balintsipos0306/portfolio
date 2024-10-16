@@ -18,7 +18,7 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <img id="logo" src="../webp/tinywow_Logó.webp" alt="">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button id="menubutton" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -37,6 +37,14 @@
                         </li>
                     </ul>
                 </div>
+                <ul class="d-flex" id="iconList">
+                        <li class="nav-item">
+                            <img id="icon" src="../webp/user.png" alt="">    
+                        </li>
+                        <li class="nav-item">
+                            <img id="icon" src="../webp/shopping-cart.png" alt="">
+                        </li>
+                </ul>
             </div>
         </nav>
     </header>
@@ -45,8 +53,8 @@
     <div class="container">
         <div class="nav">
             <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <input class="form-control me-2" type="search" placeholder="Keresés" aria-label="Keresés">
+                <button class="btn btn-outline-success" type="submit">Keresés</button>
             </form>
         </div>
     </div>

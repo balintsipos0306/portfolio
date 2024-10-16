@@ -15,15 +15,41 @@ header{
     width: auto;
 }
 
-#cart{
-    height: 1.5em;
+#icon{
+    height: 2em;
     width: auto;
+    margin-right: 1em;
 }
 
-.container{
+#iconList{
+    text-align: center;
+    margin: 0em 5em;
+    list-style: none;
+    width: fit-content;
+}
+
+main>.container{
     width:90%;
     padding: 1em;
     border-radius: 15px;
     height: 100vh;
     box-shadow: 20px 20px 50px grey;
+}
+
+#menubutton{
+    position: absolute;
+    right: 1em;
+}
+
+main>.container>nav{
+    width: 100%;
+}
+
+form{
+    margin-left: 10%;
+    width: 100%;
+}
+
+form input{
+    width: 80% !important;
 }
