@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Webshop;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -79,5 +80,24 @@ class webshopController extends Controller
         ]);
 
         return redirect()->back()->with('Success', 'Termék módosítása sikeres');
+    }
+
+    public function registrate(Request $request){
+         $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|string',
+            'password' => 'required|string',
+        ]);
+        $role='customer';
+
+        // Új rekord mentése az adatbázisba
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'role' => $role,
+            'password' => $request->password
+        ]);
+
+        return redirect()->back()->with('Success', 'Fiók létrehozása sikeres');
     }
 }

@@ -76,6 +76,8 @@ Route::get('/webshop/item/{id}', function($id) {
 Route::post('/webshop/login', [webshopLoginController::class, 'authenticate']);
 Route::delete('/webshop/logout', [webshopLoginController::class, 'destroy']);
 
+Route::post('/webshop/registrate', [webshopController::class, 'registrate']);
+
 //Admin oldal
 Route::middleware('CustomAuth') -> group(function (){
     Route::get('/admin', function (){

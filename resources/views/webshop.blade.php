@@ -17,6 +17,40 @@
   <script src="js/hamburger.js"></script>
   <script src="js/adminLogin.js"></script>
 
+  <div class="modal fade" id="reg" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Regisztráció</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <form action="/webshop/registrate" method="POST">
+        @csrf
+        <div class="mb-3">
+        <label for="name" class="form-label">Felhasználónév</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="name" name="name" required>
+        </div>
+        <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="email" name="email" required>
+        </div>
+        <div class="mb-3">
+        <label for="password" class="form-label">Jelszó</label>
+        <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="password" name="password" required>
+        </div>
+        <div class="buttons">
+            <button type="submit" class="btn btn-primary">Regisztrálás</button>
+        </div>
+        </form>    
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#login">Vissza</button>
+      </div>
+    </div>
+  </div>
+</div>
+
   <div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -53,7 +87,7 @@
         </div>
         <div class="buttons">
             <button type="submit" class="btn btn-primary">Belépés</button>
-            <p>Nincs még fiókja?<a href="#">Regisztráljon</a></p>
+            <p>Nincs még fiókja?<a href="#reg" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#reg">Regisztráljon</a></p>
         </div>
         </form>
       </div>
