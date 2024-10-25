@@ -63,6 +63,8 @@ Route::post('/send-email-to-subs', [MailController::class, 'sendMailToSub']);
 
 Route::get('/newBlog-email', [MailController::class, 'newBlogToMail']);
 
+
+//Webshop
 Route::get('/shop', function(){
     return view("webshop");
 });
@@ -74,6 +76,7 @@ Route::get('/webshop/item/{id}', function($id) {
 Route::post('/webshop/login', [webshopLoginController::class, 'authenticate']);
 Route::delete('/webshop/logout', [webshopLoginController::class, 'destroy']);
 
+//Admin oldal
 Route::middleware('CustomAuth') -> group(function (){
     Route::get('/admin', function (){
         return view('Admin/adminView');
@@ -111,6 +114,7 @@ Route::middleware('CustomAuth') -> group(function (){
         return view('Admin/webshopEdit', ['id' => $id]);
     })->name('item.edit');
 });
+
 
 Route::middleware('webshopItem')->group(function(){
     //asfdgbcvxdyxcv
