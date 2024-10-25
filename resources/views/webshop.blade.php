@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/shop.css">
+    <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/scrollbar.css">
     <title>Sipos Bálint - Szerkesztő felület</title>
 </head>
@@ -52,6 +53,7 @@
         </div>
         <div class="buttons">
             <button type="submit" class="btn btn-primary">Belépés</button>
+            <p>Nincs még fiókja?<a href="#">Regisztráljon</a></p>
         </div>
         </form>
       </div>
@@ -155,9 +157,27 @@
             </div>
         </div>
     </div>
-
-
   </main>
+
+  <footer id="footer">
+    <div class="row">
+      <div class="col">
+        Logó:
+        <ul>
+            <li><a href="https://vipix.hu/" target="_blank">VIPIX Grafikai Stúdió</a></li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <ul>
+          <li>Az oldalt készítette: Sipos Bálint</li>
+          <li>Cím: 9200, Mosonmagyaróvár Gát utca 45/b</li>
+          <li><a href="/contact">Elérhetőségek</a></li>
+        </ul>    
+      </div>
+    </div>
+  </footer>
+
 
 </body>
 </html>
