@@ -26,19 +26,19 @@
         </button>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
           <div class="offcanvas-header">
-            <a href="/admin" id="homeButton"><h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menü</h5></a>
+          <a href="/admin" id="homeButton"><h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menü</h5></a>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Blog szerkesztés</a>
+                <a class="nav-link active" aria-current="page" href="/admin/blog">Blog szerkesztés</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/admin/image-upload">Képek feltöltése</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/admin/webshop">Webshop szerkesztése</a>
+                <a class="nav-link" href="#">Webshop szerkesztése</a>
               </li>
             </ul>
             <form action="/logout" method="POST" id="logout">
@@ -50,24 +50,23 @@
         </div>
       </div>
     </nav>
-
   </header>
 
   <main>
-    <h1>Blogok szerkesztése</h1>
+    <h1>Webshop szerkesztése</h1>
 
     @php
-      $blogs = DB::table('blogs') -> get();
+      $items = DB::table('webshop') -> get();
     @endphp
 
-<div class="container">
+    <div class="container">
         <div class="container mt-4" id="table">
             <div class="row">
               <div class="col d-flex align-items-center justify-content-center">
                 <h2>ID</h2>
               </div>    
               <div class="col d-flex align-items-center justify-content-center">
-                <h2>Cím</h2>
+                <h2>Név</h2>
               </div>
               <div class="col d-flex align-items-center justify-content-center">
                 <h2>Szöveg</h2>
@@ -76,38 +75,32 @@
                 <h2>Kép</h2>
               </div>
               <div class="col d-flex align-items-center justify-content-center">
-                <h2>Állapot</h2>
-              </div>
-              <div class="col d-flex align-items-center justify-content-center">
-                <h2>Utoljára módosítva</h2>
+                <h2>Ár</h2>
               </div>
               <div class="col d-flex align-items-center justify-content-center">
                 <h2>Szerkesztés</h2>
               </div>
             </div>
               
-            @foreach($blogs as $blog)
+            @foreach($items as $item)
               <div class="row">
                   <div class="col d-flex align-items-center justify-content-center" id="col">
-                    <p>{{$blog->id}}</p>
+                    <p>{{$item->id}}</p>
                   </div>
                   <div class="col d-flex align-items-center justify-content-center" id="col">
-                    <p>{{$blog->title}}</p>
+                    <p>{{$item->name}}</p>
                   </div>
                   <div class="col d-flex align-items-center justify-content-center" id="col">
-                    <p>{{$blog->text}}</p>
+                    <p>{{$item->text}}</p>
                   </div>
                   <div class="col d-flex align-items-center justify-content-center" id="col">
-                    <img src="{{ asset('storage/' . $blog->image_path) }}">
+                    <img src="{{ asset('storage/' . $item->image_path) }}">
                   </div>
                   <div class="col d-flex align-items-center justify-content-center" id="col">
-                    <p>{{$blog->isPublished}}</p>
+                    <p>{{$item->price}} Ft</p>
                   </div>
                   <div class="col d-flex align-items-center justify-content-center" id="col">
-                    <p>{{$blog->updated_at}}</p>
-                  </div>
-                  <div class="col d-flex align-items-center justify-content-center" id="col">
-                  <a href="{{ route('blog.edit', ['id' => $blog->id]) }}">Szerkesztés</a>
+                  <a href="{{ route('item.edit', ['id' => $item->id]) }}">Szerkesztés</a>
                   </div>
               </div>
             @endforeach
@@ -115,15 +108,15 @@
 
 
     <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      Blog készítése
+      Új termék feltöltése
     </button>
 
     <div class="collapse" id="collapseExample">
       <div class="card card-body"> 
-        <form action="/blog-upload" method="POST" enctype="multipart/form-data">
+        <form action="/webshop-upload" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
-          <label for="title" class="form-label">Cím</label>
+          <label for="title" class="form-label">Név</label>
           <input type="text" class="form-control" id="title" name="title" required>
         </div>
         <div class="mb-3">
@@ -131,14 +124,14 @@
           <textarea class="form-control" id="text" name="text" rows="3"></textarea>
         </div>
         <div class="mb-3">
-          <label for="image" class="form-label">Borítókép feltöltése</label>
+          <label for="image" class="form-label">Kép feltöltése</label>
           <input class="form-control" type="file" name="image" id="image" required>
         </div>
-        <label for="isPublished" class="form-label">Mentés módja</label>
-        <select class="form-select" name="isPublished" id="isPublished">
-          <option selected value="Publikált">Publikálás</option>
-          <option value="Piszkozat">Piszkozat</option>
-        </select>
+        <div class="mb-3">
+          <label for="price" class="form-label">Ár</label>
+          <input type="number" class="form-control" id="price" name="price" required>
+        </div>
+
         <button class="btn btn-primary" type="submit">Feltöltés</button>
         </form>
       </div>
@@ -146,12 +139,12 @@
 
 
     <button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#delete" aria-expanded="false" aria-controls="collapseExample">
-      Blog törlése
+      Termék törlése
     </button>
 
     <div class="collapse" id="delete">
       <div class="card card-body"> 
-        <form action="/blog-delete" method="POST" enctype="multipart/form-data">
+        <form action="/webshop-delete" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
           <label for="id" class="form-label">ID</label>

@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/shop.css">
-    <link rel="stylesheet" href="css/scrollbar.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/shop.css">
+    <link rel="stylesheet" href="../../css/shopItem.css">
+    <link rel="stylesheet" href="../../css/scrollbar.css">
     <title>Sipos Bálint - Szerkesztő felület</title>
 </head>
 <body id="page">
@@ -132,28 +133,64 @@
                 <button class="btn btn-outline-success" type="submit">Keresés</button>
             </form>
         </div>
-
+        
         <div class="items">
-
             @php
-                $items = DB::table('webshop')->get();
+                $item = DB::table('webshop')->where('id', $id)->first();
+                $allItems = DB::table('webshop')->get();
             @endphp
 
             <div class="row">
-            @foreach ($items as  $item)
                 <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{ asset('storage/' . $item->image_path) }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{$item->name}}</h5>
-                            <p class="card-text">{{$item->text}}</p>
-                            <a href="{{ route('item.open', ['id' => $item->id]) }}" class="btn btn-primary">Megnyitás</a>
+                <img src="{{ asset('storage/' . $item->image_path) }}" class="card-img-top" alt="...">
+                </div>
+                <div class="col">
+                    <a href="/shop" ><img src="../../webp/back-button.png" id="backIcon" alt=""></a>
+                    <p id="price">{{$item->price}} Ft</p>
+                    <div class="content">
+                        <h2>{{$item->name}}</h2>
+                        <section>
+                            {{$item->text}}
+                        </section>
+                    </div>
+                    @if (!empty(Auth()->user()->name))
+                        <button type="button" class="btn btn-light" id="cartbutton">
+                            <img src="../../webp/shopping-cart.png" id="icon" alt="">
+                            <i>Kosárba</i>
+                        </button>
+                    @else
+                        <button type="button" class="btn btn-light" id="cartbutton" disabled>
+                            <img src="../../webp/shopping-cart.png" id="icon" alt="">
+                            <i>Kosárba</i>
+                        </button>
+                        <i id="cartAlert">A kosárhoz előbb lépj be</i>
+                    @endif
+                </div>
+            </div>
+
+            <h2><u>További termékek</u></h2>
+
+            <div class="row d-flex flex-nowrap" id="felsorolas">
+                @foreach ($allItems as $items)
+                    @if ($items->name != $item->name)                    
+                    <div class="col">
+                        <div class="card" aria-hidden="true">
+                            <img src="{{ asset('storage/' . $items->image_path) }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                <span>{{$items->name}}</span>
+                                </h5>
+                                <p class="card-text" id="szoveg">{{$items->text}}...</p>
+                                <a class="btn btn-primary col-6" href="{{ route('item.open', ['id' => $items->id]) }}">Megnyitás</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                    @endif
+                @endforeach
             </div>
+
         </div>
+
     </div>
 
 

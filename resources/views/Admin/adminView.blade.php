@@ -38,7 +38,7 @@
                 <a class="nav-link" href="/admin/image-upload">Képek feltöltése</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Webshop szerkesztése</a>
+                <a class="nav-link" href="/admin/webshop">Webshop szerkesztése</a>
               </li>
             </ul>
             <form action="/logout" method="POST" id="logout">

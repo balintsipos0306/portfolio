@@ -32,15 +32,26 @@ header{
     padding: 0 0.5em;
     text-align: center;
     margin: auto;
-    z-index: 999999 !important;
+    overflow: hidden;
 }
 
+#popup{
+    width: 90%;
+    text-align: right;
+    padding: 0;
+    background-color: transparent;
+}
+
+.collapse{
+    width: fit-content;
+    float: right;
+}
 
 main>.container{
     width:90%;
     padding: 1em;
     border-radius: 15px;
-    height: 100vh;
+    padding-bottom: 10em;
     box-shadow: 20px 20px 50px grey;
 }
 
@@ -55,4 +66,23 @@ form{
 
 form input{
     width: 80% !important;
+}
+
+.items{
+    margin-top: 3em;
+    width: 100%;
+}
+
+.items .col .card{
+    margin: auto;
+}
+
+.items .col .card:hover{
+    box-shadow: 10px 10px 10px lightgray;
+    transition: all 0.5s;
+}
+
+#username{
+    float:left;
+    font-size: 1em;
 }

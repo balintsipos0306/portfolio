@@ -7,6 +7,8 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\SubController;
+use App\Http\Controllers\webshopController;
+use App\Http\Controllers\webshopLoginController;
 
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::delete('/logout', [LoginController::class, 'destroy']);
@@ -65,6 +67,13 @@ Route::get('/shop', function(){
     return view("webshop");
 });
 
+Route::get('/webshop/item/{id}', function($id) {
+    return view('webshopItem', ['id' => $id]);
+})->name('item.open');
+
+Route::post('/webshop/login', [webshopLoginController::class, 'authenticate']);
+Route::delete('/webshop/logout', [webshopLoginController::class, 'destroy']);
+
 Route::middleware('CustomAuth') -> group(function (){
     Route::get('/admin', function (){
         return view('Admin/adminView');
@@ -90,4 +99,19 @@ Route::middleware('CustomAuth') -> group(function (){
         return view('Admin/blogEdit', ['id' => $id]);
     })->name('blog.edit');
 
+    Route::get('/admin/webshop', function(){
+        return view('Admin/adminWebshop');
+    });
+
+    Route::post('/webshop-upload', [webshopController::class, 'store']);
+    Route::post('/webshop-delete', [webshopController::class, 'delete']);
+    Route::post('/webshop-update', [webshopController::class, 'update']);
+
+    Route::get('/admin/webshop/item/{id}', function($id) {
+        return view('Admin/webshopEdit', ['id' => $id]);
+    })->name('item.edit');
+});
+
+Route::middleware('webshopItem')->group(function(){
+    //asfdgbcvxdyxcv
 });

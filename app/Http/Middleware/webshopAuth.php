@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class CustomAuth
+class webshopAuth
 {
     /**
      * Handle an incoming request.
@@ -16,11 +16,11 @@ class CustomAuth
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->role === 'admin') {
+        if (Auth::check() && Auth::user()->role === 'customer') {
             return $next($request);
         }
 
-        // Ha a felhasználó nem admin, átirányítja a főoldalra
-        return redirect('/')->withErrors(['access_denied' => 'Nincs jogosultságod az oldal megtekintéséhez.']);
+        // Ha a felhasználó nem customer, átirányítja a webshop főoldalára
+        return redirect()->back()->withErrors(['access_denied' => 'Nincs jogosultságod az oldal megtekintéséhez.']);
     }
 }
