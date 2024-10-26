@@ -69,7 +69,7 @@ Route::get('/shop', function(){
     return view("webshop");
 });
 
-Route::get('/webshop/item/{id}', function($id) {
+Route::get('/shop/item/{id}', function($id) {
     return view('webshopItem', ['id' => $id]);
 })->name('item.open');
 

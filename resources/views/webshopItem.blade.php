@@ -125,7 +125,7 @@
           @endphp
           <div class="row">
             <div class="col d-flex align-items-center"><img src="{{ asset('storage/' . $item->image_path) }}" class="card-img-top" alt="..."></div>
-            <div class="col d-flex align-items-center"><a href="/webshop/item/{{$item->id}}"><h7>{{$item->name}}</h7></a></div>
+            <div class="col d-flex align-items-center"><a href="/shop/item/{{$item->id}}"><h7>{{$item->name}}</h7></a></div>
             <div class="col d-flex align-items-center"><i>{{$item->price}} Ft</i></div>
             <div class="col d-flex align-items-center">
               <form action="/delete-from-cart" method="POST" class="d-flex align-items-center">
