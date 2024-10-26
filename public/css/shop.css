@@ -13,6 +13,10 @@ header{
     width: auto;
 }
 
+#navv{
+    margin-bottom: 2em;
+}
+
 #myheader .container{
     position: absolute;
     bottom:0em;
