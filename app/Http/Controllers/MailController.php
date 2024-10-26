@@ -180,18 +180,10 @@ class MailController extends Controller
             $mail->smtpClose();
         }
         return redirect()->back()->with('success', 'Blog feltöltve - email elküldve');
-        
-        //FOLYT KÖv
+    }
 
-        //WEBSHOP oldal lértrehozása
-        //  Login, reg
-        //  Kosár
-        // Termékek, keresés stb..
 
-        //Kommentek
-        //Alapvető cuccokat külön függvényekbebe rakni -->> Egy kis rendrakás
-        // SEEDEK
-
+    public function Registrated(Request $request){
 
     }
 }

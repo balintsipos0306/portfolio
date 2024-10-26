@@ -141,6 +141,20 @@
           <hr>
         @endforeach
       </div>
+      <div class="container" id="sum">
+        @php
+          $sum = 0;
+          foreach($cartitems as $cart){
+            $i = DB::table('webshop')->where('id', $cart->itemID)->first();
+            $sum += $i->price;
+          }
+        @endphp
+        <hr class="border border-secondary border-3 opacity-75">
+        <p><i><b>Összesen</b>: {{$sum}} Ft</i></p>
+        <div class="buttonholder">
+          <a class="btn btn-primary">Megrendelem</a>
+        </div>
+      </div>
     @else
     <div>
       Az ön kosara még üres

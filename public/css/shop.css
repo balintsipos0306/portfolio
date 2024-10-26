@@ -122,3 +122,23 @@ form input{
     position: absolute;
     right: 10px;
 }
+
+#sum{
+    position: absolute;
+    bottom: 3em;
+    right: 0;
+    width: 100%;
+}
+
+#sum p{
+    width: 90%;
+    margin: auto;
+    padding-bottom: 1em;
+    text-align: center;
+}
+
+#sum .buttonholder{
+    margin: auto;
+    width: fit-content;
+    text-align: center;
+}
