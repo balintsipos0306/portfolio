@@ -107,9 +107,28 @@
   </div>
   <div class="offcanvas-body">
   @if (!empty(Auth()->user()->name))
+    @php
+      $cartitems = DB::table('cart')->where('userID', Auth()->user()->id)->get();
+      $hasItems = DB::table('cart')->where('userID', Auth()->user()->id)->first();
+    @endphp
+    @if (!empty($hasItems))
+      <div class="container">
+        @foreach ($cartitems as $cart)
+          @php
+            $item = DB::table('webshop')->where('id', $cart->itemID)->first();
+          @endphp
+          <div class="row">
+            <div class="col"><img src="{{ asset('storage/' . $item->image_path) }}" class="card-img-top" alt="..."></div>
+            <div class="col"><h7>{{$item->name}}</h7></div>
+            <div class="col"><p><i>{{$item->price}} Ft</i></p></div>
+          </div>
+        @endforeach
+      </div>
+    @else
     <div>
-      Itt található meg a kosár tartalma
+      Az ön kosara még üres
     </div>
+    @endif
   @else
     <p>Kosár használatához, először lépj be</p>
     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#login">Belépés</button>
@@ -155,7 +174,18 @@
             <a data-bs-toggle="modal" data-bs-target="#login"><img id="icon" src="../../webp/user.png" alt=""></a>
         </li>
         <li class="nav-item">
-            <a data-bs-toggle="offcanvas" href="#cart" role="button" aria-controls="offcanvasExample"><img id="icon" src="../../webp/shopping-cart.png" alt=""></a>
+        @if (empty(Auth()->user()->name))
+          <a data-bs-toggle="offcanvas" href="#cart" role="button" aria-controls="offcanvasExample"><img id="icon" src="../../webp/shopping-cart.png" alt=""></a>
+          @else
+            @php
+              $cartitems = DB::table('cart')->where('userID', Auth()->user()->id)->first();
+            @endphp
+            @if (empty($cartitems))
+              <a data-bs-toggle="offcanvas" href="#cart" role="button" aria-controls="offcanvasExample"><img id="icon" src="../../webp/shopping-cart.png" alt=""></a>
+            @else
+              <a data-bs-toggle="offcanvas" href="#cart" role="button" aria-controls="offcanvasExample"><img id="icon" src="../../webp/shopping-cart-item.png" alt=""></a>   
+            @endif
+          @endif
         </li>
         </ul>
     </div>
@@ -190,10 +220,19 @@
                         </section>
                     </div>
                     @if (!empty(Auth()->user()->name))
-                        <button type="button" class="btn btn-light" id="cartbutton">
+                        <form action="/item-to-cart" method="POST">
+                          @csrf
+                          <div class="mb-3">
+                            <input type="hidden" class="form-control" id="ID" name="itemID" value="{{$id}}">
+                          </div>
+                          <div class="mb-3">
+                            <input type="hidden" class="form-control" id="ID" name="userID" value="{{Auth()->user()->id}}">
+                          </div>
+                          <button type="submit" class="btn btn-light" id="cartbutton">
                             <img src="../../webp/shopping-cart.png" id="icon" alt="">
                             <i>Kosárba</i>
                         </button>
+                        </form>
                     @else
                         <button type="button" class="btn btn-light" id="cartbutton" disabled>
                             <img src="../../webp/shopping-cart.png" id="icon" alt="">

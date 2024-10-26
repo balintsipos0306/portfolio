@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Webshop;
 use App\Models\User;
+use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -99,5 +100,14 @@ class webshopController extends Controller
         ]);
 
         return redirect()->back()->with('Success', 'Fiók létrehozása sikeres');
+    }
+
+    public function addToCart(Request $request){
+        Cart::create([
+            'userID' => $request->userID,
+            'itemID' => $request->itemID,
+        ]);
+
+        return redirect()->back()->with('Success', 'Termék a kosárba helyezve');
     }
 }
