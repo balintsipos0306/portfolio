@@ -73,6 +73,10 @@ form input{
     width: 100%;
 }
 
+.items .col{
+    margin-bottom: 1.5em;
+}
+
 .items .col .card{
     margin: auto;
 }
@@ -85,4 +89,14 @@ form input{
 #username{
     float:left;
     font-size: 1em;
+}
+
+#szoveg{
+    height: 3em;
+    overflow: hidden;
+}
+
+.card{
+    width: 20em;
+    margin-bottom: 1em;
 }
