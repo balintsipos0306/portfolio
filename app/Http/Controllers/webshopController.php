@@ -110,4 +110,20 @@ class webshopController extends Controller
 
         return redirect()->back()->with('Success', 'Termék a kosárba helyezve');
     }
+
+    public function deleteFromCart(Request $request){
+        $request->validate([
+            'userID' => 'required|int',
+            'itemID' => 'required|int',
+        ]);
+
+        $selectedItem = DB::table('cart')->where('userID', $request->userID)->where('itemID', $request->itemID)->first();
+        
+        if(!empty($selectedItem)){
+            DB::table('cart')->where('userID', $request->userID)->where('itemID', $request->itemID)->delete();
+            return redirect()->back()->with('Success', 'Sikeres törlés');
+        }
+        return redirect()->back()->with('Failed', 'Sikertelen törlés');
+
+    }
 }

@@ -119,15 +119,28 @@
     @endphp
     @if (!empty($hasItems))
       <div class="container">
-        @foreach ($cartitems as $cart)
+      @foreach ($cartitems as $cart)
           @php
             $item = DB::table('webshop')->where('id', $cart->itemID)->first();
           @endphp
           <div class="row">
-            <div class="col"><img src="{{ asset('storage/' . $item->image_path) }}" class="card-img-top" alt="..."></div>
-            <div class="col"><h7>{{$item->name}}</h7></div>
-            <div class="col"><p><i>{{$item->price}} Ft</i></p></div>
+            <div class="col d-flex align-items-center"><img src="{{ asset('storage/' . $item->image_path) }}" class="card-img-top" alt="..."></div>
+            <div class="col d-flex align-items-center"><a href="/webshop/item/{{$item->id}}"><h7>{{$item->name}}</h7></a></div>
+            <div class="col d-flex align-items-center"><i>{{$item->price}} Ft</i></div>
+            <div class="col d-flex align-items-center">
+              <form action="/delete-from-cart" method="POST" class="d-flex align-items-center">
+                @csrf
+                <div class="mb-3">
+                  <input type="hidden" name="userID" value="{{Auth()->user()->id}}" readonly>
+                </div>
+                <div class="mb-3">
+                  <input type="hidden" name="itemID" value="{{$item->id}}" readonly>
+                </div>
+                <button id="deleteButton" type="submit"><img src="../../webp/close.png" alt=""></button>
+              </form>
+            </div>
           </div>
+          <hr>
         @endforeach
       </div>
     @else
@@ -174,9 +187,11 @@
     <div class="container">
         <ul id="iconList" class="nav">
         <li class="nav-item">
-            @if (!empty(Auth()->user()->name))
+       @if (!empty(Auth()->user()->name))
               <p id="username">{{Auth()->user()->name}}</p>
             @endif
+       </li>
+        <li class="nav-item">
             <a data-bs-toggle="modal" data-bs-target="#login"><img id="icon" src="../../webp/user.png" alt=""></a>
         </li>
         <li class="nav-item">

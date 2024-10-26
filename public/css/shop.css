@@ -100,3 +100,21 @@ form input{
     width: 20em;
     margin-bottom: 1em;
 }
+
+#deleteButton{
+    border: none;
+}
+
+#deleteButton img{
+    height: 0.8em;
+    background-color: transparent;
+}
+
+#cart .container .row .col:last-child{
+    position: relative;
+}
+
+#cart .container .row .col:last-child button{
+    position: absolute;
+    right: 10px;
+}
