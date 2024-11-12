@@ -73,6 +73,10 @@ Route::get('/shop/item/{id}', function($id) {
     return view('webshopItem', ['id' => $id]);
 })->name('item.open');
 
+Route::get('/shop/order', function(){
+    return view('orderItem');
+});
+
 Route::post('/webshop/login', [webshopLoginController::class, 'authenticate']);
 Route::delete('/webshop/logout', [webshopLoginController::class, 'destroy']);
 
@@ -117,9 +121,4 @@ Route::middleware('CustomAuth') -> group(function (){
     Route::get('/admin/webshop/item/{id}', function($id) {
         return view('Admin/webshopEdit', ['id' => $id]);
     })->name('item.edit');
-});
-
-
-Route::middleware('webshopItem')->group(function(){
-    //asfdgbcvxdyxcv
 });

@@ -152,7 +152,7 @@
         <hr class="border border-secondary border-3 opacity-75">
         <p><i><b>Összesen</b>: {{$sum}} Ft</i></p>
         <div class="buttonholder">
-          <a class="btn btn-primary">Megrendelem</a>
+          <a class="btn btn-primary" href="/shop/order" target="_blank">Megrendelem</a>
         </div>
       </div>
     @else

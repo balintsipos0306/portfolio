@@ -1,0 +1,16 @@
+main>.container{
+    width: 100%;
+    padding-top: 3em;
+}
+
+
+.row{
+    margin: auto;
+    width:80%;
+    margin-bottom: 1em;
+}
+
+main h1{
+    text-align: center;
+    margin: auto;
+}
