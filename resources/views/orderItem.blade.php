@@ -40,6 +40,7 @@
             $cart = DB::table('cart')->where('userID', Auth()->user()->id)->get();
         @endphp
 
+        <div class="container" id="cart">
         @foreach ($cart as $item)
             @php
                 $items = DB::table('webshop')->where('id', $item->itemID)->first();
@@ -68,34 +69,39 @@
                 </div>
             </div>
         @endforeach
+        </div>
 
         <hr>
 
         <form action="" method="POST">
             @csrf
-            <div class="mb-3">
-                <label for="firstname" class="form-label"><strong>Keresztnév</strong></label>
-                <input type="text" class="form-control" name="firstname" required>
+            <div class="row g-2">
+                <div class="col-auto">
+                    <label for="firstname" class="form-label"><strong>Vezetéknév</strong></label>
+                    <input type="text" class="form-control" name="lastname" required>
+                </div>
+                <div class="col-auto">
+                    <label for="firstname" class="form-label"><strong>Keresztnév</strong></label>
+                    <input type="text" class="form-control" name="firstname" required>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="firstname" class="form-label"><strong>Vezetéknév</strong></label>
-                <input type="text" class="form-control" name="lastname" required>
-            </div>
-            <div class="mb-3">
-                <label for="irsz" class="form-label"><strong>Irányítószám</strong></label>
-                <input type="number" class="form-control" name="irsz" required>
-            </div>
-            <div class="mb-3">
-                <label for="city" class="form-label"><strong>Város</strong></label>
-                <input type="text" class="form-control" name="city" required>
-            </div>
-            <div class="mb-3">
-                <label for="street" class="form-label"><strong>Utca</strong></label>
-                <input type="text" class="form-control" name="street" required>
-            </div>
-            <div class="mb-3">
-                <label for="housenum" class="form-label"><strong>Házszám</strong></label>
-                <input type="text" class="form-control" name="housenum" required>
+            <div class="row g-4">
+                <div class="col-auto">
+                    <label for="irsz" class="form-label"><strong>Irányítószám</strong></label>
+                    <input type="number" class="form-control" name="irsz" required>
+                </div>
+                <div class="col-auto">
+                    <label for="city" class="form-label"><strong>Város</strong></label>
+                    <input type="text" class="form-control" name="city" required>
+                </div>
+                <div class="col-auto">
+                    <label for="street" class="form-label"><strong>Utca</strong></label>
+                    <input type="text" class="form-control" name="street" required>
+                </div>
+                <div class="col-auto">
+                    <label for="housenum" class="form-label"><strong>Házszám</strong></label>
+                    <input type="text" class="form-control" name="housenum" required>
+                </div>
             </div>
         </form>
     </div>
