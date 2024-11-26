@@ -78,7 +78,7 @@ class MailController extends Controller
                 <p>Köszönöm hogy feliratkoztál a hírlevelemre.
                 Minden új blog bejegyzésről, vagy webshop termékekről elsőként fogsz értesítést kapni, hogy ne maradj le semmiről</p>
                 <br>
-                <div style="margin: auto;text-align: center;"><a href="http://localhost:8000/unSubscribe?email=' . urlencode($address) . '&name=' . urlencode($name) . '" style="background-color: #3F4E4F; color: white;padding: 10px; border-radius: 10px; text-decoration: none;">Fiók törlése</a></div>
+                <div style="margin: auto;text-align: center;"><a href="http://localhost:8000/unSubscribe?email=' . urlencode($address) . '&name=' . urlencode($name) . '" style="background-color: #3F4E4F; color: white;padding: 10px; border-radius: 10px; text-decoration: none;">Leiratkozás</a></div>
                 </div> 
             ';
         if (!$mail->send()) {
@@ -212,7 +212,7 @@ class MailController extends Controller
                 <hr>
                 <p>A webshopba történő regisztrációd sikeres, hogy ne maradj le az újdonságoktól iratkozz fel a hírlevelemre is. A törölni szeretnéd a fiókodat az alábbi gomb segítségével ezt megteheted. </p>
                 <br>
-                <div style="margin: auto;text-align: center;"><a href="http://localhost:8000/unSubscribe?email=' . urlencode($address) . '&name=' . urlencode($name) . '" style="background-color: #3F4E4F; color: white;padding: 10px; border-radius: 10px; text-decoration: none;">Leiratkozás</a></div>
+                <div style="margin: auto;text-align: center;"><a href="http://localhost:8000/unSubscribe?email=' . urlencode($address) . '&name=' . urlencode($name) . '" style="background-color: #3F4E4F; color: white;padding: 10px; border-radius: 10px; text-decoration: none;">Fiók törlése</a></div>
                 </div> 
             ';
         if (!$mail->send()) {
