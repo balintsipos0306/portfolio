@@ -154,6 +154,44 @@
         </form>
       </div>
     </div>
+
+    <h1>Regisztrált fiókok</h1>
+    <div class="container">
+      @php
+       $accs = DB::table('users')->where('role', "customer")->get();
+      @endphp
+
+<div class="container">
+        <div class="container mt-4" id="table">
+            <div class="row">
+              <div class="col d-flex align-items-center justify-content-center">
+                <h2>Felhasználónév</h2>
+              </div>    
+              <div class="col d-flex align-items-center justify-content-center">
+                <h2>Email</h2>
+              </div>
+              <div class="col d-flex align-items-center justify-content-center">
+                <h2>Regisztráció dátuma</h2>
+              </div>
+            </div>
+              
+            @foreach($accs as $acc)
+              <div class="row">
+                  <div class="col d-flex align-items-center justify-content-center" id="col">
+                    <p>{{$acc->name}}</p>
+                  </div>
+                  <div class="col d-flex align-items-center justify-content-center" id="col">
+                    <p>{{$acc->email}}</p>
+                  </div>
+                  <div class="col d-flex align-items-center justify-content-center" id="col">
+                    <p>{{$acc->created_at}}</p>
+                  </div>
+              </div>
+            @endforeach
+        </div>
+      
+    </div>
+
   </main>
 
 </body>

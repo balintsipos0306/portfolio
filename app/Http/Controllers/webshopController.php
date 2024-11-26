@@ -99,7 +99,7 @@ class webshopController extends Controller
             'password' => $request->password
         ]);
 
-        return redirect()->back()->with('Success', 'Fiók létrehozása sikeres');
+        return redirect()->action([MailController::class, 'newAcc'], ['email' => $request->email, 'name'=> $request->name]);
     }
 
     public function addToCart(Request $request){
@@ -121,6 +121,22 @@ class webshopController extends Controller
         
         if(!empty($selectedItem)){
             DB::table('cart')->where('userID', $request->userID)->where('itemID', $request->itemID)->delete();
+            return redirect()->back()->with('Success', 'Sikeres törlés');
+        }
+        return redirect()->back()->with('Failed', 'Sikertelen törlés');
+
+    }
+
+    public function deleteAcc(Request $request){
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|string',
+        ]);
+
+        $acc = DB::table('users')->where('name', $request->name)->where('email', $request->email)->first();
+        
+        if(!empty($acc)){
+            DB::table('users')->where('name', $request->name)->where('email', $request->email)->delete();
             return redirect()->back()->with('Success', 'Sikeres törlés');
         }
         return redirect()->back()->with('Failed', 'Sikertelen törlés');

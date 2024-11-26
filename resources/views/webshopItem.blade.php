@@ -119,7 +119,7 @@
     @endphp
     @if (!empty($hasItems))
       <div class="container">
-      @foreach ($cartitems as $cart)
+        @foreach ($cartitems as $cart)
           @php
             $item = DB::table('webshop')->where('id', $cart->itemID)->first();
           @endphp
@@ -136,12 +136,26 @@
                 <div class="mb-3">
                   <input type="hidden" name="itemID" value="{{$item->id}}" readonly>
                 </div>
-                <button id="deleteButton" type="submit"><img src="../../webp/close.png" alt=""></button>
+                <button id="deleteButton" type="submit"><img src="../webp/close.png" alt=""></button>
               </form>
             </div>
           </div>
           <hr>
         @endforeach
+      </div>
+      <div class="container" id="sum">
+        @php
+          $sum = 0;
+          foreach($cartitems as $cart){
+            $i = DB::table('webshop')->where('id', $cart->itemID)->first();
+            $sum += $i->price;
+          }
+        @endphp
+        <hr class="border border-secondary border-3 opacity-75">
+        <p><i><b>Összesen</b>: {{$sum}} Ft</i></p>
+        <div class="buttonholder">
+          <a class="btn btn-primary" href="/shop/order" target="_blank">Megrendelem</a>
+        </div>
       </div>
     @else
     <div>

@@ -44,6 +44,7 @@ Route::get('/blog', function(){
 });
 
 Route::get('/subEmail', [MailController::class, 'Subscribe']);
+Route::get('/regist', [MailController::class, 'newAcc']);
 
 Route::post('/sub', [SubController::class, 'store']);
 
@@ -83,6 +84,7 @@ Route::delete('/webshop/logout', [webshopLoginController::class, 'destroy']);
 Route::post('/webshop/registrate', [webshopController::class, 'registrate']);
 Route::post('item-to-cart', [webshopController::class, 'addToCart']);
 Route::post('delete-from-cart', [webshopController::class, 'deleteFromCart']);
+Route::post('rm-acc', [webshopController::class, 'deleteAcc']);
 
 //Admin oldal
 Route::middleware('CustomAuth') -> group(function (){
