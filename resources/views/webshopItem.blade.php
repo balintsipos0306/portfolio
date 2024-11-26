@@ -28,27 +28,31 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Regisztráció</h1>
+        <h1 class="modal-title fs-5">Regisztráció</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <form action="/webshop/registrate" method="POST">
-        @csrf
-        <div class="mb-3">
-        <label for="name" class="form-label">Felhasználónév</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="name" name="name" required>
-        </div>
-        <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="email" name="email" required>
-        </div>
-        <div class="mb-3">
-        <label for="password" class="form-label">Jelszó</label>
-        <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="password" name="password" required>
-        </div>
-        <div class="buttons">
-            <button type="submit" class="btn btn-primary">Regisztrálás</button>
-        </div>
+        <form action="/webshop/registrate" method="POST">
+          @csrf
+          <div class="mb-3">
+            <label for="name" class="form-label">Felhasználónév</label>
+            <input type="text" class="form-control" aria-describedby="name" name="name" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" aria-describedby="email" name="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Jelszó</label>
+            <input type="password" class="form-control" aria-describedby="password" name="password" required>
+          </div>
+          <div class="form-check" id="check">
+            <input name="checkbox" type="checkbox" class="form-check-input" value="true">
+            <label class="form-check-label" for="checkbox">Feliratkozom a hírlevélre</label>
+          </div>
+          <div class="buttons">
+              <button type="submit" class="btn btn-primary">Regisztrálás</button>
+          </div>
         </form>    
       </div>
       <div class="modal-footer">
