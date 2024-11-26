@@ -221,6 +221,13 @@ class MailController extends Controller
             echo 'Message has been sent.';
         }
         $mail->smtpClose();
+        
+        if($request->subsbcribe){
+            return redirect()->action([SubController::class, 'store'], ['email' => $request->email, 'name'=> $request->name]);
+        }
+        
         return redirect()->back()->with('Success', 'Sikeres feliratkozás');
+
+
     }
 }

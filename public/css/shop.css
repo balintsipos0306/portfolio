@@ -142,3 +142,7 @@ form input{
     width: fit-content;
     text-align: center;
 }
+
+#check{
+    width: 3em;
+}

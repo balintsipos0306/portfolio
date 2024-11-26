@@ -46,6 +46,9 @@ Route::get('/blog', function(){
 Route::get('/subEmail', [MailController::class, 'Subscribe']);
 Route::get('/regist', [MailController::class, 'newAcc']);
 
+
+Route::get('/sub', [SubController::class, 'store']); //Regisztrációkor való hírlevélre feliratkozáskor használt
+
 Route::post('/sub', [SubController::class, 'store']);
 
 Route::get('/blog/{id}', function($id) {

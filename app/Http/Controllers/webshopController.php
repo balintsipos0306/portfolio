@@ -98,8 +98,8 @@ class webshopController extends Controller
             'role' => $role,
             'password' => $request->password
         ]);
-
-        return redirect()->action([MailController::class, 'newAcc'], ['email' => $request->email, 'name'=> $request->name]);
+        
+        return redirect()->action([MailController::class, 'newAcc'], ['email' => $request->email, 'name'=> $request->name, 'subsbcribe' => $request->checkbox]);
     }
 
     public function addToCart(Request $request){
