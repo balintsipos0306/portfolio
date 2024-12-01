@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('cart', function (Blueprint $table) {
             $table->id();
-            $table->integer('userID');
-            $table->integer('itemID');
+            $table->unsignedBigInteger('userID');
+            $table->unsignedBigInteger('itemID');
             $table->timestamps();
+            $table->foreign('userID')->references('id')->on('users');
+            $table->foreign('itemID')->references('id')->on('webshop');
         });
     }
 
