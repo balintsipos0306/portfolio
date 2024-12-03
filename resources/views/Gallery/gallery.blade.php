@@ -5,21 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/galery.css">
-    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/galery.css">
+    <link rel="stylesheet" href="../../css/footer.css">
     <title>Galéria - Sipos Bálint</title>
 </head>
 <body>
 
   <div class="loader">
-
   </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <script src="../js/scroll.js"></script>
-    <script src="../js/hamburger.js"></script>
-    <script src="../js/adminLogin.js"></script>
+    <script src="../../js/scroll.js"></script>
+    <script src="../../js/hamburger.js"></script>
+    <script src="../../js/adminLogin.js"></script>
+    <script src="../../js/picViewer.js"></script>
 
     <header id="myheader">
 
@@ -30,7 +30,7 @@
     </div>
 
       <div class= "logoholder">
-        <img id = "logo" src="../webp/tinywow_Logó.webp" alt="">
+        <img id = "logo" src="../../webp/tinywow_Logó.webp" alt="">
       </div>
 
       <nav id = "navv">
@@ -78,8 +78,8 @@
 
         <div class="row">
           @foreach ($pictures as $picture)
-            <div class="col-sm-6">
-              <img src="{{ asset('storage/' . $picture->image_path) }}" alt="">
+            <div class="col-sm-6" id="{{"col" . $picture->id}}">
+              <img id="{{$picture->id}}" src="{{ asset('storage/' . $picture->image_path) }}" alt="" onclick= showPic(this)>
             </div>
           @endforeach
         </div>

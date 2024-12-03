@@ -1,19 +1,4 @@
-// document.addEventListener("DOMContentLoaded", function() {
-    const wh = window.innerHeight;
-//     console.log(wh);
-
-//     const bodyHeight = document.body.offsetHeight;
-//     console.log(bodyHeight);
-
-//     var footer = document.getElementById("footer");
-
-//     if (wh > bodyHeight) {
-//         footer.classList.add("bottom");
-//     } else {
-//         footer.classList.remove("bottom");
-//     }
-// });
-
+const wh = window.innerHeight;
 document.addEventListener("scroll", function(){
     var vonal = document.getElementById("hr");
 
