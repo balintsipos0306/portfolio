@@ -19,6 +19,7 @@
     <script src="../js/scroll.js"></script>
     <script src="../js/hamburger.js"></script>
     <script src="../js/adminLogin.js"></script>
+    <script src="../js/picViewer.js"></script>
 
     <header id="myheader">
 
@@ -78,7 +79,7 @@
         <div class="row">
           @foreach ($pictures as $picture)
             <div class="col-sm-6">
-              <img src="{{ asset('storage/' . $picture->image_path) }}" alt="">
+              <img src="{{ asset('storage/' . $picture->image_path) }}" alt="" onclick="showPic(this)">
             </div>
           @endforeach
         </div>
