@@ -16,7 +16,6 @@ function showPic(element){
 
     var zoomed = element.cloneNode(false);
     zoomed.id = 1000;
-    //var holder = document.getElementById("col" + element.id);
     overlay.appendChild(zoomed);
 
     zoomed.style.position = "fixed";
@@ -27,8 +26,6 @@ function showPic(element){
     zoomed.style.transform = "translate(-50%, -50%)";
     zoomed.style.transition = "width 0.5s, opacity 0.5s";
     zoomed.style.zIndex = "1000";
-
-
 
     setTimeout(() => {
         overlay.style.opacity = "1";
