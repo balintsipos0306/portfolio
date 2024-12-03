@@ -108,7 +108,7 @@ class webshopController extends Controller
             'itemID' => $request->itemID,
         ]);
 
-        return redirect()->back()->with('Success', 'Termék a kosárba helyezve');
+        return back()->with('success', 'Termék a kosárba helyezve');
     }
 
     public function deleteFromCart(Request $request){
@@ -139,7 +139,7 @@ class webshopController extends Controller
             DB::table('users')->where('name', $request->name)->where('email', $request->email)->delete();
             return redirect()->back()->with('Success', 'Sikeres törlés');
         }
-        return redirect()->back()->with('Failed', 'Sikertelen törlés');
+        return redirect()->back()->withErrors(['delete' => 'Fiók törlése sikertelen']);
 
     }
 }
