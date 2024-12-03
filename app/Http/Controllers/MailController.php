@@ -45,7 +45,7 @@ class MailController extends Controller
         ';
         $mail->send();
         $mail->smtpClose();
-        return redirect()->back()->with('success', 'email sikeresen elküldve');
+        return back()->with('success', 'Email sikeresen elküldve');
     }
 
     public function Subscribe(Request $request){
@@ -87,7 +87,7 @@ class MailController extends Controller
             echo 'Message has been sent.';
         }
         $mail->smtpClose();
-        return redirect()->back()->with('Success', 'Sikeres feliratkozás');
+        return back()->with('Success', 'Sikeres feliratkozás');
     }
 
     public function sendMailToSub(Request $request){
@@ -226,7 +226,7 @@ class MailController extends Controller
             return redirect()->action([SubController::class, 'store'], ['email' => $request->email, 'name'=> $request->name]);
         }
         
-        return redirect()->back()->with('Success', 'Sikeres feliratkozás');
+        return back()->with('Success', 'Sikeres feliratkozás');
 
 
     }

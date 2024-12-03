@@ -18,7 +18,7 @@ class webshopLoginController extends Controller
             $request->session()->regenerate();
             return redirect()->back();
         }
-        return redirect()->back()->withErrors(['login' => 'Invalid credentials']);
+        return back()->withErrors(['login' => 'Helytelen felhasználónév vagy jelszó']);
     }
     public function destroy(Request $request)
     {
