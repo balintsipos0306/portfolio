@@ -1,5 +1,10 @@
 function showPic(element){
 
+    if (window.innerWidth <= 600){
+
+    }
+    else{
+
     const overlay = document.createElement("div");
     overlay.id = "overlay";
     document.body.appendChild(overlay);
@@ -39,5 +44,6 @@ function showPic(element){
             overlay.remove();
         }, 200);
     });
+    }
     
 };
