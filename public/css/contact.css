@@ -49,7 +49,18 @@ footer{
 }
 
 @media (max-width: 1500px){
-    footer{
-        position: absolute;
+    .image{
+        float: none;
+        background-color: BLUE;
+        width: 100%;
+    }
+
+    .image img{
+        margin: auto;
+    }
+    .form{
+        float: left;
+        width: 100%;
+        background-color: RED;
     }
 }
