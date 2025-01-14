@@ -144,7 +144,6 @@
       </div>
     </div>
 
-
     <button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#delete" aria-expanded="false" aria-controls="collapseExample">
       Blog törlése
     </button>
