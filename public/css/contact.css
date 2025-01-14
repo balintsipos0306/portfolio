@@ -51,7 +51,6 @@ footer{
 @media (max-width: 1500px){
     .image{
         float: none;
-        background-color: BLUE;
         width: 100%;
     }
 
@@ -61,6 +60,5 @@ footer{
     .form{
         float: left;
         width: 100%;
-        background-color: RED;
     }
 }
