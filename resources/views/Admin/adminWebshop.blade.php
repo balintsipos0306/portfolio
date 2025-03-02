@@ -80,6 +80,9 @@
               <div class="col d-flex align-items-center justify-content-center">
                 <h2>Szerkesztés</h2>
               </div>
+              <div class="col d-flex align-items-center justify-content-center">
+                <h2>Törlés</h2>
+              </div>
             </div>
               
             @foreach($items as $item)
@@ -101,6 +104,15 @@
                   </div>
                   <div class="col d-flex align-items-center justify-content-center" id="col">
                   <a href="{{ route('item.edit', ['id' => $item->id]) }}">Szerkesztés</a>
+                  </div>
+                  <div class="col d-flex align-items-center justify-content-center" id="col">
+                  <form action="/webshop-delete" method="POST" enctype="multipart/form-data">
+                  @csrf
+                  <div class="mb-3">
+                    <input type="number" class="form-control" id="id" name="id" value="{{ $item->id }}" readonly hidden>
+                  </div>
+                  <button id="delButton" type="submit"><img src="../webp/close.png" alt=""></button>
+                  </form>
                   </div>
               </div>
             @endforeach
@@ -133,24 +145,6 @@
         </div>
 
         <button class="btn btn-primary" type="submit">Feltöltés</button>
-        </form>
-      </div>
-    </div>
-
-
-    <button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#delete" aria-expanded="false" aria-controls="collapseExample">
-      Termék törlése
-    </button>
-
-    <div class="collapse" id="delete">
-      <div class="card card-body"> 
-        <form action="/webshop-delete" method="POST" enctype="multipart/form-data">
-        @csrf
-        <div class="mb-3">
-          <label for="id" class="form-label">ID</label>
-          <input type="number" class="form-control" id="id" name="id" required>
-        </div>
-        <button class="btn btn-primary" type="submit">Törlés</button>
         </form>
       </div>
     </div>

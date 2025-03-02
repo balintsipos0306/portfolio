@@ -71,6 +71,9 @@
               <div class="col d-flex align-items-center justify-content-center">
                 <h2>Kategória</h2>
               </div>
+              <div class="col d-flex align-items-center justify-content-center">
+                <h2>Törlés</h2>
+              </div>
             </div>
               
             @foreach($pictures as $picture)
@@ -83,6 +86,15 @@
                   </div>
                   <div class="col d-flex align-items-center justify-content-center" id="col">
                     <p>{{$picture->category}}</p>
+                  </div>
+                  <div class="col d-flex align-items-center justify-content-center" id="col">
+                  <form action="/rm-image" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div>
+                        <input type="number" name="id" class="form-control" value="{{ $picture->id }}" readonly hidden>
+                    </div>
+                    <button id="delete" type="submit"><img src="../webp/close.png" alt=""></button>
+                  </form>
                   </div>
               </div>
             @endforeach
@@ -112,23 +124,6 @@
               </div>
               
               <button class="btn btn-primary" type="submit">Feltöltés</button>
-              </form>
-            </div>
-          </div>
-
-          <button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#image-delete" aria-expanded="false" aria-controls="image-delete">
-            Képek törlése
-          </button>
-
-          <div class="collapse" id="image-delete">
-            <div class="card card-body">
-              <form action="/rm-image" method="POST" enctype="multipart/form-data">
-              @csrf
-              <div>
-                  <label for="id">ID: </label>
-                  <input type="number" name="id" class="form-control">
-              </div>
-              <button class="btn btn-primary" type="submit">törlés</button>
               </form>
             </div>
           </div>

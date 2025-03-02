@@ -84,6 +84,9 @@
               <div class="col d-flex align-items-center justify-content-center">
                 <h2>Szerkesztés</h2>
               </div>
+              <div class="col d-flex align-items-center justify-content-center">
+                <h2>Törlés</h2>
+              </div>
             </div>
               
             @foreach($blogs as $blog)
@@ -108,6 +111,16 @@
                   </div>
                   <div class="col d-flex align-items-center justify-content-center" id="col">
                   <a href="{{ route('blog.edit', ['id' => $blog->id]) }}">Szerkesztés</a>
+                  </div>
+                  <div class="col d-flex align-items-center justify-content-center" id="col">
+                    <form action="/blog-delete" method="POST">
+                        @csrf
+                        <div class="mb-3">
+                          <input type="number" class="form-control" id="title" name="id" value = {{$blog->id}} hidden>
+                          <button id="delButton" type="submit"><img src="../webp/close.png" alt=""></button>
+                        </div>
+
+                    </form>
                   </div>
               </div>
             @endforeach
@@ -144,22 +157,6 @@
       </div>
     </div>
 
-    <button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#delete" aria-expanded="false" aria-controls="collapseExample">
-      Blog törlése
-    </button>
-
-    <div class="collapse" id="delete">
-      <div class="card card-body"> 
-        <form action="/blog-delete" method="POST" enctype="multipart/form-data">
-        @csrf
-        <div class="mb-3">
-          <label for="id" class="form-label">ID</label>
-          <input type="number" class="form-control" id="id" name="id" required>
-        </div>
-        <button class="btn btn-primary" type="submit">Törlés</button>
-        </form>
-      </div>
-    </div>
   </main>
 
 </body>

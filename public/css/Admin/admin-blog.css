@@ -45,3 +45,13 @@ main>h1{
     width: auto;
     margin: auto;
 }
+
+#delButton{
+    border: none;
+    text-align: center;
+}
+
+#delButton>img{
+    height: 1.5em;
+    width: auto;
+}

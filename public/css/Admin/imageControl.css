@@ -38,3 +38,13 @@
     height: fit-content;
     margin: auto;
 }
+
+#delete{
+    border: none;
+    text-align: center;
+}
+
+#delete>img{
+    height: 1.5em;
+    width: auto;
+}
