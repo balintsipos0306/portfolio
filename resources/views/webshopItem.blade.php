@@ -140,7 +140,7 @@
                 <div class="mb-3">
                   <input type="hidden" name="itemID" value="{{$item->id}}" readonly>
                 </div>
-                <button id="deleteButton" type="submit"><img src="../webp/close.png" alt=""></button>
+                <button id="deleteButton" type="submit"><img src="../../webp/close.png" alt=""></button>
               </form>
             </div>
           </div>
