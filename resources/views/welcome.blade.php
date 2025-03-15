@@ -21,11 +21,10 @@
   <script src="js/adminLogin.js"></script>
 
   <header id="myheader">
-
     <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
     </div>
 
     <div class= "logoholder">
@@ -51,9 +50,7 @@
           </li>
       </ul>
     </nav>
-
-  </header>
-    
+  </header> 
     
   <main id = "main">
     <div class="slide">
@@ -91,17 +88,14 @@
     </div>
       
     <div class="title">
-      <h1>
-          Bemutatkozás
-      </h1>
+      <h1>Bemutatkozás</h1>
       <hr id="hr" class="border border-black border-2 opacity-100">
     </div>
 
     <div class="about">
       <div class="imgholder">
-          <img src="../me.jpg" alt="">
+        <img src="../me.jpg" alt="">
       </div>
-      
       <section>
         <p>Sipos Bálint vagyok, {{date('Y')-2003}} éves, jelenleg a Szombathelyi Eltén tanulok Programtervező Informatikus szakon. 2019 őszén kezdtem el a természetfotózást egy jégmadár miatt.</p>
         <p>2019 nyár elején elmentem édesapámmal evezni a Szigetközbe, ahol nyáron vízitúravezetőként dolgozok és akkor láttunk nagyon közelről egy jégmadarat és akkor jutott eszembe, hogy milyen jó lenne, ha tudnék egy saját képet készíteni róla (egy teljesen légből kapott ötletként). Miután ezt eldöntöttem még hónapokig fényképezőgép se volt a kezemben, de utána október körül elkezdtem fotózni. November közepére sikerült is elkészítenem az első viszonylag közeli jégmadár képemet.</p>
@@ -111,7 +105,6 @@
         <p>2023-ban kezdtem el a portré és rendezvényfotózással is foglalkozni. Zengő Ferenc barátomtól nagyon sokat tanulhatok mind portré mind esküvőfotózás terén.</p>
       </section>
     </div>
-      
   </main>
 
   <footer id="footer">
@@ -119,7 +112,7 @@
       <div class="col">
         Logó:
         <ul>
-            <li><a href="https://vipix.hu/" target="_blank">VIPIX Grafikai Stúdió</a></li>
+          <li><a href="https://vipix.hu/" target="_blank">VIPIX Grafikai Stúdió</a></li>
         </ul>
       </div>
 
@@ -132,7 +125,6 @@
       </div>
     </div>
   </footer>
-
   <script src="js/main.js"></script>
 </body>
 </html>
