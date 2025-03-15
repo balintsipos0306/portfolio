@@ -74,6 +74,7 @@
       </ul>
     </nav>
   </header>
+
   <main id = "main">  
     @php
       $blogs = DB::table('blogs')->where('isPublished', "publikált")->get();
@@ -87,7 +88,7 @@
           <form action="/sub" method="POST">
             @csrf
             <div class="input-group" id="inputs">
-              <div class="g col-3">
+              <div class="g col-4">
                 <label for="name" class="form-label">Keresztnév</label>
                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="name" name="name">
               </div>
@@ -117,23 +118,6 @@
           </div>
         </div>
       @endforeach
-
-      <div class="col">
-        <div class="card" aria-hidden="true">
-          <div class="card-body">
-            <h5 class="card-title placeholder-glow">
-              <span class="placeholder col-6"></span>
-            </h5>
-            <p class="card-text placeholder-glow">
-            <span class="placeholder col-7"></span>
-            <span class="placeholder col-4"></span>
-            <span class="placeholder col-4"></span>
-            <span class="placeholder col-6"></span>
-            <span class="placeholder col-8"></span>
-            <a class="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
-          </div>
-        </div>
-      </div>
     </div>
     
     <hr class="border border-secondary border-3 opacity-75">
