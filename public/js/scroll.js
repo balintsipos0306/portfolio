@@ -23,7 +23,7 @@ document.addEventListener("scroll", function() {
     var nav = document.getElementById("navv");
     var links = document.querySelectorAll(".nav-link");
 
-    if(window.scrollY > value){
+    if(window.scrollY > 10){
         logo.style.display = "none";
         // logo.style.transition = "all 1s ease-in-out"
         header.style.backgroundColor = "#3F4E4F";

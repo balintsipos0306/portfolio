@@ -64,14 +64,17 @@ hr{
     form{
         padding-top: 20px;
         border-top: 3px solid gray;
-        width: 30em;
+        width: 35em;
         border-radius: 0px;
         box-shadow: none;
     }
 }
 
-@media (max-width: 600px){
+@media (max-width: 480px){
     form{
         width: 20em;
+    }
+    .image img{
+        height: 15em;
     }
 }

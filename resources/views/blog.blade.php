@@ -41,15 +41,14 @@
             }
         });
     </script>
-@endif
+  @endif
 
 
   <header id="myheader">
-
     <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
     </div>
 
     <div class= "logoholder">
@@ -68,25 +67,22 @@
           <a class="nav-link" href="contact">Elérhetőségek</a>
         </li>
         <li class="nav-item">
-              <a class="nav-link" href="#">Blog</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="/shop">Webshop</a>
-          </li>
+          <a class="nav-link" href="#">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/shop">Webshop</a>
+        </li>
       </ul>
     </nav>
-
   </header>
-    
-  <m id = "main">
-    
-  @php
-    $blogs = DB::table('blogs')->where('isPublished', "publikált")->get();
-  @endphp
+  <main id = "main">  
+    @php
+      $blogs = DB::table('blogs')->where('isPublished', "publikált")->get();
+    @endphp
 
-  <div class="container">
-    <div id="sub" class="card text-bg-success mb-3">
-      <div class="card-header">Feliratkozás</div>
+    <div class="container">
+      <div id="sub" class="card text-bg-success mb-3">
+        <div class="card-header">Feliratkozás</div>
         <div class="card-body">
           <h5 class="card-title">Iratkozz fel a körlevélre, hogy emailben értesülj az új bejegyzésekről</h5>
           <form action="/sub" method="POST">
@@ -101,62 +97,57 @@
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="name" name="email">
               </div>
             </div>
-              <button type="submit" class="btn btn-light">Feliratkozás</button>
+            <button type="submit" class="btn btn-light">Feliratkozás</button>
           </form>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="row d-flex flex-nowrap" id="felsorolas">
-    @foreach ($blogs as $blog)
-    <div class="col">
-      <div class="card" aria-hidden="true">
-        <img src="{{ asset('storage/' . $blog->image_path) }}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">
-            <span>{{$blog->title}}</span>
-            </h5>
-            <p class="card-text" id="szoveg">{{$blog->text}}...</p>
-            <a class="btn btn-primary col-6" href="{{ route('blog.open', ['id' => $blog->id]) }}">Megnyitás</a>
+    <div class="row d-flex flex-nowrap" id="felsorolas">
+      @foreach ($blogs as $blog)
+        <div class="col">
+          <div class="card" aria-hidden="true">
+            <img src="{{ asset('storage/' . $blog->image_path) }}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">
+                <span>{{$blog->title}}</span>
+              </h5>
+              <p class="card-text" id="szoveg">{{$blog->text}}...</p>
+              <a class="btn btn-primary col-6" href="{{ route('blog.open', ['id' => $blog->id]) }}">Megnyitás</a>
+            </div>
+          </div>
+        </div>
+      @endforeach
+
+      <div class="col">
+        <div class="card" aria-hidden="true">
+          <div class="card-body">
+          <h5 class="card-title placeholder-glow">
+            <span class="placeholder col-6"></span>
+          </h5>
+          <p class="card-text placeholder-glow">
+          <span class="placeholder col-7"></span>
+          <span class="placeholder col-4"></span>
+          <span class="placeholder col-4"></span>
+          <span class="placeholder col-6"></span>
+          <span class="placeholder col-8"></span>
+          <a class="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
         </div>
       </div>
     </div>
-    @endforeach
 
-    <div class="col">
-    <div class="card" aria-hidden="true">
-    <div class="card-body">
-    <h5 class="card-title placeholder-glow">
-      <span class="placeholder col-6"></span>
-    </h5>
-    <p class="card-text placeholder-glow">
-      <span class="placeholder col-7"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-4"></span>
-      <span class="placeholder col-6"></span>
-      <span class="placeholder col-8"></span>
-    </p>
-    <a class="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
-  </div>
-</div>
+    <hr class="border border-secondary border-3 opacity-75">
+
+    @php
+      $latest = DB::table('blogs')->where('isPublished', "Publikált")->orderBy('created_at', 'DESC')->first();
+    @endphp
+
+    <div class="container">
+      <img id="borito" src="{{asset('storage/'. $latest->image_path)}}" alt="">
+      <h2>{{$latest->title}}</h2>
+      <hr>
+      <p>{{$latest->text}}</p>
     </div>
-  </div>
-
-  <hr class="border border-secondary border-3 opacity-75">
-
-  @php
-    $latest = DB::table('blogs')->where('isPublished', "Publikált")->orderBy('created_at', 'DESC')->first();
-  @endphp
-
-  <div class="container">
-    <img id="borito" src="{{asset('storage/'. $latest->image_path)}}" alt="">
-    <h2>{{$latest->title}}</h2>
-    <hr>
-    <p>{{$latest->text}}</p>
-
-  </div>
-  
   </main>
 
   <footer id="footer">
@@ -167,7 +158,6 @@
             <li><a href="https://vipix.hu/" target="_blank">VIPIX Grafikai Stúdió</a></li>
         </ul>
       </div>
-
       <div class="col">
         <ul>
           <li>Az oldalt készítette: Sipos Bálint</li>
@@ -177,7 +167,6 @@
       </div>
     </div>
   </footer>
-
   <script src="js/main.js"></script>
 </body>
 </html>
