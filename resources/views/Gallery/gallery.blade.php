@@ -57,9 +57,7 @@
   </header>
 
   <main>
-
     <div id="pics">
-
       <div class="row" id="category">
         <div class="col-sm-4" id="nextGallery">
           <a href="/gallery/portraits">
@@ -86,14 +84,12 @@
 
       <div class="row">
         @foreach ($pictures as $picture)
-        <div class="col-sm-6" id="{{"col" . $picture->id}}">
-          <img id="{{$picture->id}}" src="{{ asset('storage/' . $picture->image_path) }}" alt="" onclick=showPic(this)>
-        </div>
+          <div class="col-sm-6" id="{{"col" . $picture->id}}">
+            <img id="{{$picture->id}}" src="{{ asset('storage/' . $picture->image_path) }}" alt="" onclick=showPic(this)>
+          </div>
         @endforeach
       </div>
-
     </div>
-
   </main>
 
   <footer id="footer">
@@ -113,11 +109,6 @@
         </ul>
       </div>
     </div>
-
   </footer>
-
-
-
 </body>
-
 </html>

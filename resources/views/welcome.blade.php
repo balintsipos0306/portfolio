@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/fooldal.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/scrollbar.css">
-    <title>Sipos Bálint - Kezdőlap</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/fooldal.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/scrollbar.css">
+  <title>Sipos Bálint - Kezdőlap</title>
 </head>
 <body id="page">
   <div class="loader">
@@ -43,11 +43,11 @@
           <a class="nav-link" href="/contact">Elérhetőségek</a>
         </li>
         <li class="nav-item">
-              <a class="nav-link" href="/blog">Blog</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="/shop">Webshop</a>
-          </li>
+          <a class="nav-link" href="/blog">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/shop">Webshop</a>
+        </li>
       </ul>
     </nav>
   </header> 
