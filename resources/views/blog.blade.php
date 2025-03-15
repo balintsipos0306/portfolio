@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/blog.css">
-    <link rel="stylesheet" href="css/scrollbar.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <title>Sipos Bálint - Kezdőlap</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/blog.css">
+  <link rel="stylesheet" href="css/scrollbar.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <title>Sipos Bálint - Kezdőlap</title>
 </head>
 <body id="page">
   <div class="loader">
@@ -22,27 +22,26 @@
 
   @if (session('success'))
     <div class="toast-container position-fixed top-0 end-0 p-3">
-        <div id="successToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <strong class="me-auto text-success">Siker</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-                {{ session('success') }}
-            </div>
+      <div id="successToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <strong class="me-auto text-success">Siker</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
+        <div class="toast-body">
+          {{ session('success') }}
+        </div>
+      </div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const toastElement = document.getElementById('successToast');
-            if (toastElement) {
-                const toast = new bootstrap.Toast(toastElement, { autohide: false });
-                toast.show();
-            }
-        });
+      document.addEventListener('DOMContentLoaded', function () {
+          const toastElement = document.getElementById('successToast');
+          if (toastElement) {
+              const toast = new bootstrap.Toast(toastElement, { autohide: false });
+              toast.show();
+          }
+      });
     </script>
   @endif
-
 
   <header id="myheader">
     <div class="hamburger">
@@ -122,20 +121,21 @@
       <div class="col">
         <div class="card" aria-hidden="true">
           <div class="card-body">
-          <h5 class="card-title placeholder-glow">
+            <h5 class="card-title placeholder-glow">
+              <span class="placeholder col-6"></span>
+            </h5>
+            <p class="card-text placeholder-glow">
+            <span class="placeholder col-7"></span>
+            <span class="placeholder col-4"></span>
+            <span class="placeholder col-4"></span>
             <span class="placeholder col-6"></span>
-          </h5>
-          <p class="card-text placeholder-glow">
-          <span class="placeholder col-7"></span>
-          <span class="placeholder col-4"></span>
-          <span class="placeholder col-4"></span>
-          <span class="placeholder col-6"></span>
-          <span class="placeholder col-8"></span>
-          <a class="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
+            <span class="placeholder col-8"></span>
+            <a class="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
+          </div>
         </div>
       </div>
     </div>
-
+    
     <hr class="border border-secondary border-3 opacity-75">
 
     @php
@@ -155,7 +155,7 @@
       <div class="col">
         Logó:
         <ul>
-            <li><a href="https://vipix.hu/" target="_blank">VIPIX Grafikai Stúdió</a></li>
+          <li><a href="https://vipix.hu/" target="_blank">VIPIX Grafikai Stúdió</a></li>
         </ul>
       </div>
       <div class="col">
