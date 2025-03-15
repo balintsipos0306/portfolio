@@ -85,7 +85,7 @@
                 <a href="tel:+36705872912"><img src="webp/png-clipart-telephone-logo-iphone-telephone-call-smartphone-phone-electronics-text.png"></img></a>  
     </div>
 
-      <div class="container">
+      <div class="container" id="info">
         <div class="image">
           <img src="../webp/tinywow_DSC_6422_65925974.webp" alt="">
         </div>

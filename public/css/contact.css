@@ -1,19 +1,20 @@
-.container:first-child{
-    margin: auto;
-    width:60%;
+main{
+    margin-bottom: 5em
 }
 
 form{
-    margin: auto;
-    width: 60%;
-    padding: 15px;
-    float: right;
+    width: 40em;
+    padding: 40px;
     border-radius: 10px;
     box-shadow: 10px 10px 30px lightgrey;
 }
-
-main{
-    margin-bottom: 5em
+#info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width:100%;
 }
 
 .socials{
@@ -22,6 +23,7 @@ main{
     margin: auto;
     padding: 10px;
     text-align: center;
+    margin-bottom: 2em;
 }
 
 .socials img{
@@ -38,9 +40,7 @@ footer{
 }
 
 .image{
-    width: 40%;
-    padding: 1em;
-    float: left;
+    margin: 2em;
 }
 
 .image img{
@@ -49,16 +49,17 @@ footer{
 }
 
 @media (max-width: 1500px){
-    .image{
-        float: none;
-        width: 100%;
+    #info{
+        flex-direction: column;
     }
+}
 
-    .image img{
-        margin: auto;
-    }
+@media (max-width: 600px){
     .form{
-        float: left;
-        width: 100%;
+        width: 90%;
+        padding: 10px;
+        margin: auto;
+
+        background-color: red;
     }
 }
