@@ -56,16 +56,16 @@
 
     <main>
 
-      <div id="termeszet">
+      <div id="pics">
         
-        <div class="row">
-          <div class="col-sm-4">
+        <div class="row" id="category">
+          <div class="col-sm-4" id="nextGallery">
             <a href="/gallery/portraits"><h2>Porté fotók</h2></a>
           </div>
           <div class="col-sm-4">
              <a href=""><h1>Rendezvényfotók</h1></a>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-4" id="nextGallery">
             <a href="/gallery/nature"><h2>Természetfotók</h2></a>
           </div>
         </div>

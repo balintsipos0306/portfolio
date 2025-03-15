@@ -1,6 +1,6 @@
 function showPic(element){
 
-    if (window.innerWidth <= 600){
+    if (window.innerWidth <= 576){
 
     }
     else{
