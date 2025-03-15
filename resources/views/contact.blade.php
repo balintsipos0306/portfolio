@@ -89,8 +89,8 @@
         <div class="image">
           <img src="../webp/tinywow_DSC_6422_65925974.webp" alt="">
         </div>
-      
-        <div class="form">
+
+        <div>
           <form action="/mail" method="POST">
             @csrf
             <div class="mb-3">
@@ -124,7 +124,7 @@
 
     </main>
 
-    <footer id="footer">
+    <footer>
       <div class="row">
         <div class="col">
           Logó:
